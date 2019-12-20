@@ -1,13 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const StyledHeading = styled.h1`
-  ${({ logo }) =>
-    logo &&
-    css`
-      color: ${({ theme }) => theme.fontColorHeader};
-      font-size: 1.5rem;
-      text-transform: uppercase;
-    `};
+const StyledHeading = styled.h2`
   ${({ main }) =>
     main &&
     css`

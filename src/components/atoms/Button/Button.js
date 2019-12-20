@@ -5,6 +5,7 @@ const StyledButton = styled.a`
   color: inherit;
   border: none;
   text-decoration: none;
+  font-weight: ${({ theme }) => theme.light};
   ${({ active }) =>
     active &&
     css`

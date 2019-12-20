@@ -11,5 +11,12 @@ const Text = styled.p`
       padding: 1rem 0;
       text-align: center;
     `}
+  ${({ logo }) =>
+    logo &&
+    css`
+      color: ${({ theme }) => theme.fontColorHeader};
+      font-size: 1.5rem;
+      text-transform: uppercase;
+    `};
 `;
 export default Text;

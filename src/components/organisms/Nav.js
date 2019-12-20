@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../atoms/Button/Button';
+import Preferences from '../molecules/Preferences';
 
 const StyledWrapper = styled.nav`
   margin-top: 3rem;
@@ -35,6 +36,7 @@ const Navigation = () => (
         <Button href="">Outdoor</Button>
       </StyledLinkWrapper>
     </StyledListWrapper>
+    <Preferences />
   </StyledWrapper>
 );
 export default Navigation;

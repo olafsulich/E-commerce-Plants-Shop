@@ -20,7 +20,9 @@ const StyledWrapper = styled.div`
 
 const Header = () => (
   <StyledHeader>
-    <Text logo>Plants & Home</Text>
+    <Text logo as="h1">
+      Plants & Home
+    </Text>
     <StyledWrapper>
       <StyledButtonIcon cart />
       <StyledButtonIcon />

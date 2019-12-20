@@ -16,7 +16,7 @@ const StyledWrapperHeading = styled.article`
   text-align: center;
   padding: 0 1rem;
 `;
-const StyledWrapperImage = styled.div`
+const StyledWrapperImage = styled.figure`
   width: 25rem;
   height: 27rem;
   margin-top: 2rem;
