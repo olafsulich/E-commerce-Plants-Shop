@@ -7,13 +7,23 @@ import Plant4 from '../../assets/images/sarah-dorweiler-9Z1KRIfpBTM-unsplash (1)
 import Plant5 from '../../assets/images/sarah-dorweiler-m2J105CzEAU-unsplash.jpg';
 
 const StyledWrapper = styled.section`
-  margin: 0 auto;
+  margin: 0 3rem;
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
   align-items: center;
   grid-column-gap: 2rem;
   max-width: 100%;
+  @media only screen and (min-width: 550px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media only screen and (min-width: 1000px) {
+    grid-column-gap: 3rem;
+  }
+  @media only screen and (min-width: 1000px) {
+    max-width: 70vw;
+    margin: 0 auto;
+  }
 `;
 
 const StyledTitleWrapper = styled.div`
@@ -35,49 +45,15 @@ const StyledTitle = styled.h3`
 `;
 
 const StyledImageWrapper = styled.figure`
-  width: 25rem;
-  height: 14rem;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+  margin: 0 auto;
   position: relative;
-  will-change: opacity;
-  transition: opacity 0.3s ease-in-out;
-
-  &:after {
-    content: '';
-    transition: transform 1.4s ease-in-out;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    right: 0;
-    background: #fff;
-    will-change: transform;
-    animation: slideIn 1.4s forwards;
-  }
-  @keyframes slideIn {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
 `;
 
 const StyledImage = styled.img`
   width: 100%;
-  will-change: transform;
-  transform: scale(1.3);
-  transition: transform 1.4s ease-in-out;
-  animation: zoomOut 1.4s forwards;
-  @keyframes zoomOut {
-    0% {
-      transform: scale(1.3);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
 `;
 const products = [
   {
@@ -101,7 +77,7 @@ const products = [
     src: Plant5,
   },
 ];
-const Product = () => (
+const Products = () => (
   <StyledWrapper>
     {products.map(({ title, src }) => (
       <StyledTitleWrapper key={title}>
@@ -114,4 +90,4 @@ const Product = () => (
   </StyledWrapper>
 );
 
-export default Product;
+export default Products;

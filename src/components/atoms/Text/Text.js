@@ -9,7 +9,8 @@ const Text = styled.p`
       line-height: 1.8rem;
       font-weight: ${({ theme }) => theme.light};
       padding: 1rem 0;
-      text-align: center;
+      text-align: left;
+      width: 60%;
     `}
   ${({ logo }) =>
     logo &&

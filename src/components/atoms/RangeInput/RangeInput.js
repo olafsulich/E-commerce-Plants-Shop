@@ -4,7 +4,14 @@ import styled from 'styled-components';
 
 const InputWrapper = styled.div`
   margin: 2rem 0;
-  width: 100%;
+  width: 24rem;
+  @media only screen and (min-width: 500px) {
+    width: 28rem;
+  }
+  @media only screen and (min-width: 700px) {
+    margin: 0 2rem;
+    width: 24rem;
+  }
   input[type='range'] {
     -webkit-appearance: none;
     background: none;

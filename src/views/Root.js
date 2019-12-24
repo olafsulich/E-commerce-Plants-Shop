@@ -1,18 +1,18 @@
 import React from 'react';
 import Header from '../components/organisms/Header';
 import MainTemplate from '../templates/MainTemplate';
-import WelcomeStyle from '../theme/WelcomeStyle';
+import Hero from '../components/organisms/Hero';
 import Navigation from '../components/organisms/Nav';
-import Product from '../components/molecules/Product';
+import Products from '../components/organisms/Products';
 
 const Root = () => (
   <MainTemplate>
     <>
       <Header />
       <main>
-        <WelcomeStyle />
+        <Hero />
         <Navigation />
-        <Product />
+        <Products />
       </main>
     </>
   </MainTemplate>

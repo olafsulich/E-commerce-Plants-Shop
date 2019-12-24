@@ -6,6 +6,10 @@ import Preferences from '../molecules/Preferences';
 const StyledWrapper = styled.nav`
   margin-top: 3rem;
   padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 const StyledListWrapper = styled.ul`
@@ -16,6 +20,7 @@ const StyledListWrapper = styled.ul`
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  position: relative;
 `;
 const StyledLinkWrapper = styled.li`
   padding: 0 1rem;

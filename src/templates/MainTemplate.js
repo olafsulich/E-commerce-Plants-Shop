@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../theme/GlobalStyles';
-import { theme } from './MainTheme';
+import { theme } from '../theme/MainTheme';
 
 const MainTemplate = ({ children }) => (
   <div>

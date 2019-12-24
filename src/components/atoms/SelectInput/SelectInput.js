@@ -5,15 +5,23 @@ import Arrow from '../../../assets/svg/arrow.svg';
 const SelectWrapper = styled.div`
   width: 100%;
   margin: 2rem 0;
+  width: 24rem;
+  @media only screen and (min-width: 500px) {
+    width: 28rem;
+  }
+  @media only screen and (min-width: 700px) {
+    margin: 0 2rem;
+    width: 24rem;
+  }
 `;
 
-const Label = styled.label`
-  display: block;
-  font-size: 0.95rem;
-  font-weight: ${({ theme }) => theme.regular};
-  text-align: start;
-  padding: 0.8rem 0;
-`;
+// const Label = styled.label`
+//   display: block;
+//   font-size: 0.95rem;
+//   font-weight: ${({ theme }) => theme.regular};
+//   text-align: start;
+//   padding: 0.8rem 0;
+// `;
 
 const Select = styled.select`
   background: ${({ theme }) => theme.secondaryColor};
@@ -29,7 +37,7 @@ const Select = styled.select`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  text-indent: 70px;
+  text-indent: 0%;
   text-overflow: '';
   background-image: url(${Arrow});
   background-position: 95% 50%;
@@ -56,7 +64,6 @@ const Option = styled.option`
 
 const SelectInput = () => (
   <SelectWrapper>
-    <Label htmlFor="select">Provenance</Label>
     <Select id="select">
       <Option>provenance</Option>
       <Option>option 3</Option>

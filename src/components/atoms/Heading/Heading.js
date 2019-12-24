@@ -10,6 +10,19 @@ const StyledHeading = styled.h2`
       padding: 0.4rem 0;
       position: relative;
       display: inline-block;
+      @media only screen and (min-width: 500px) {
+        font-size: 3rem;
+      }
+      @media only screen and (min-width: 850px) {
+        font-size: 3.6rem;
+      }
+      @media only screen and (min-width: 1200px) {
+        font-size: 4rem;
+      }
+      @media only screen and (min-width: 1400px) {
+        font-size: 4.4rem;
+      }
+
       ::before {
         content: '';
         position: absolute;

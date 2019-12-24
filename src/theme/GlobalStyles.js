@@ -12,6 +12,31 @@ const GlobalStyle = createGlobalStyle`
   
   html {
     font-size: 62.5%; 
+
+    @media only screen and (min-width:425px){
+      font-size: 67.5%; 
+    }
+    @media only screen and (min-width:500px){
+      font-size: 70.5%; 
+    }
+     @media only screen and (min-width:750px){
+      font-size: 75.5%; 
+    }
+    @media only screen and (min-width:1000px){
+      font-size: 77.5%; 
+    }
+    @media only screen and (min-width: 1200px) {
+      font-size: 80.5%; 
+  }
+  @media only screen and (min-width: 1400px) {
+      font-size: 82.5%; 
+  }
+  @media only screen and (min-width: 1650px) {
+      font-size: 85.5%; 
+  }
+   @media only screen and (min-width: 1800px) {
+      font-size: 100%; 
+  }
   }
   
   body {

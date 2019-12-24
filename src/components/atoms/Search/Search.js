@@ -3,7 +3,10 @@ import magnifierIcon from '../../../assets/svg/magify.svg';
 
 const Search = styled.input`
   margin: 2rem 0;
-  width: 100%;
+  width: 24rem;
+  @media only screen and (min-width: 500px) {
+    width: 28rem;
+  }
   padding: 15px 30px;
   font-size: 1.2rem;
   font-weight: ${({ theme }) => theme.regular};
@@ -15,6 +18,10 @@ const Search = styled.input`
   background-size: 15px;
   background-position: 90% 50%;
   background-repeat: no-repeat;
+  @media only screen and (min-width: 700px) {
+    margin: 0 2rem;
+    width: 24rem;
+  }
 
   ::placeholder {
     letter-spacing: 1px;

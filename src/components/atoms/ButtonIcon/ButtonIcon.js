@@ -19,5 +19,19 @@ const StyledButtonIcon = styled.button`
     css`
       background-image: url(${CartIcon});
     `}
+  @media only screen and (min-width: 700px) {
+    width: 38px;
+    height: 38px;
+    margin: 0 0.8rem;
+  }
+  @media only screen and (min-width: 900px) {
+    width: 40px;
+    height: 40px;
+    margin: 0 1rem;
+  }
+  @media only screen and (min-width: 1100px) {
+    width: 42px;
+    height: 42px;
+  }
 `;
 export default StyledButtonIcon;
