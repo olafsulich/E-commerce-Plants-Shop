@@ -9,9 +9,16 @@ const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
   }
+  *:focus {
+    outline:none;
+}
+  button{
+    background:none;
+  }
   
   html {
     font-size: 62.5%; 
+
 
     @media only screen and (min-width:425px){
       font-size: 67.5%; 
@@ -42,6 +49,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1.6rem;
     font-family: "Montserrat", sans-serif;
+    overflow-x:hidden;
+
   }
 `;
 

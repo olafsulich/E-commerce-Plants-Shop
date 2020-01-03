@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PlantIcon from '../../assets/svg/plantTree.svg';
+import Heroplant from '../atoms/Plant/Plant';
 import StyledHeading from '../atoms/Heading/Heading';
 
 const StyledWrapper = styled.section`
@@ -35,19 +35,6 @@ const StyledWrapperHeading = styled.article`
     align-items: flex-start;
   }
 `;
-const StyledWrapperImage = styled.figure`
-  width: 25rem;
-  height: 27rem;
-  margin-top: 2rem;
-  @media only screen and (min-width: 700px) {
-    width: 30rem;
-    height: 34rem;
-  }
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
 
 const Hero = () => (
   <StyledWrapper>
@@ -55,9 +42,7 @@ const Hero = () => (
       <StyledHeading main>Say hello to </StyledHeading>
       <StyledHeading main>home plants!</StyledHeading>
     </StyledWrapperHeading>
-    <StyledWrapperImage>
-      <img src={PlantIcon} alt="Plant" />
-    </StyledWrapperImage>
+    <Heroplant />
   </StyledWrapper>
 );
 export default Hero;

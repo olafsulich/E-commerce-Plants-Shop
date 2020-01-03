@@ -18,6 +18,7 @@ const Text = styled.p`
       color: ${({ theme }) => theme.fontColorHeader};
       font-size: 1.5rem;
       text-transform: uppercase;
+      cursor: pointer;
     `};
 `;
 export default Text;

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const InputWrapper = styled.div`
   margin: 2rem 0;
   width: 24rem;
+
   @media only screen and (min-width: 500px) {
     width: 28rem;
   }
@@ -15,24 +16,28 @@ const InputWrapper = styled.div`
   input[type='range'] {
     -webkit-appearance: none;
     background: none;
+    cursor: pointer;
   }
   input[type='range']::-webkit-slider-runnable-track {
     height: 5px;
     background: ${({ theme }) => theme.secondaryColor};
     border: none;
     border-radius: 3px;
+    cursor: pointer;
   }
   input[type='range']::-ms-track {
     height: 5px;
     background: ${({ theme }) => theme.secondaryColor};
     border: none;
     border-radius: 3px;
+    cursor: pointer;
   }
   input[type='range']::-moz-range-track {
     height: 5px;
     background: ${({ theme }) => theme.secondaryColor};
     border: none;
     border-radius: 3px;
+    cursor: pointer;
   }
   input[type='range']::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -43,6 +48,7 @@ const InputWrapper = styled.div`
     background: ${({ theme }) => theme.fontColorPrimary};
     margin-top: -5px;
     position: relative;
+    cursor: pointer;
   }
   input[type='range']::-ms-thumb {
     -webkit-appearance: none;
@@ -53,6 +59,7 @@ const InputWrapper = styled.div`
     background: ${({ theme }) => theme.fontColorPrimary};
     margin-top: -5px;
     position: relative;
+    cursor: pointer;
   }
   input[type='range']::-moz-range-thumb {
     -webkit-appearance: none;
@@ -63,11 +70,13 @@ const InputWrapper = styled.div`
     background: ${({ theme }) => theme.fontColorPrimary};
     margin-top: -5px;
     position: relative;
+    cursor: pointer;
   }
   input[type='range']:focus {
     outline-color: ${({ theme }) => theme.fontColorPrimary};
     &::-webkit-slider-thumb:after {
       position: absolute;
+      cursor: pointer;
       top: -35px;
       left: 50%;
       transform: translateX(-50%);
@@ -78,6 +87,7 @@ const InputWrapper = styled.div`
       border: 2px solid ${({ theme }) => theme.fontColorPrimary};
     }
     &::-ms-thumb:after {
+      cursor: pointer;
       position: absolute;
       top: -35px;
       left: 50%;
@@ -89,6 +99,7 @@ const InputWrapper = styled.div`
       border: 2px solid ${({ theme }) => theme.fontColorPrimary};
     }
     &::-moz-range-thumb:after {
+      cursor: pointer;
       position: absolute;
       top: -35px;
       left: 50%;
@@ -103,6 +114,7 @@ const InputWrapper = styled.div`
 `;
 
 const Input = styled.input`
+  cursor: pointer;
   width: 100%;
   margin-top: 1em;
 `;

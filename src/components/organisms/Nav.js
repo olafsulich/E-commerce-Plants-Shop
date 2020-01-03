@@ -30,15 +30,13 @@ const Navigation = () => (
   <StyledWrapper>
     <StyledListWrapper>
       <StyledLinkWrapper>
-        <Button active href="">
-          All
-        </Button>
+        <Button active>All</Button>
       </StyledLinkWrapper>
       <StyledLinkWrapper>
-        <Button href="">Home</Button>
+        <Button>Home</Button>
       </StyledLinkWrapper>
       <StyledLinkWrapper>
-        <Button href="">Outdoor</Button>
+        <Button>Outdoor</Button>
       </StyledLinkWrapper>
     </StyledListWrapper>
     <Preferences />

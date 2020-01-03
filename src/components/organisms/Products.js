@@ -19,9 +19,12 @@ const StyledWrapper = styled.section`
   }
   @media only screen and (min-width: 1000px) {
     grid-column-gap: 3rem;
-  }
-  @media only screen and (min-width: 1000px) {
     max-width: 70vw;
+    margin: 0 auto;
+  }
+  @media only screen and (min-width: 1600px) {
+    grid-column-gap: 3rem;
+    max-width: 60vw;
     margin: 0 auto;
   }
 `;
@@ -57,15 +60,15 @@ const StyledImage = styled.img`
 `;
 const products = [
   {
-    title: 'plant1',
+    title: 'Orhidea',
     src: Plant1,
   },
   {
-    title: 'plant2',
+    title: 'Saupal',
     src: Plant2,
   },
   {
-    title: 'plant3',
+    title: 'Momo Tree',
     src: Plant3,
   },
   {
