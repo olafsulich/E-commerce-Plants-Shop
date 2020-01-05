@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Text from '../atoms/Text/Text';
 import Button from '../atoms/Button/Button';
 import Cart from '../molecules/Cart';
 import CartIcon from '../../assets/svg/cart.svg';
-import { auth } from '../../firebase/Firebase';
+import fire from '../../firebase/Firebase';
 
 const StyledCartButton = styled(Button)`
   background-image: url(${CartIcon});
@@ -39,10 +38,14 @@ const StyledWrapper = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
+
 class Header extends React.Component {
   state = {
     isCartOpen: false,
+    user: {},
   };
+
+  unsubscribeFromAuth = null;
 
   handleCartOpen = () => {
     this.setState(prevState => ({
@@ -50,11 +53,28 @@ class Header extends React.Component {
     }));
   };
 
-  handleSignOut = () => auth.signOut();
+  componentDidMount = () => {
+    this.authListener();
+  };
+
+  authListener = () => {
+    fire.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ user });
+        localStorage.setItem('user', user.uid);
+      } else {
+        this.setState({ user: null });
+        localStorage.removeItem('user');
+      }
+    });
+  };
+
+  handlelogout = () => {
+    fire.auth().signOut();
+  };
 
   render() {
-    const { isCartOpen } = this.state;
-    const { currentUser } = this.props;
+    const { isCartOpen, user } = this.state;
     return (
       <StyledHeader>
         <StyledLink to="/">
@@ -63,8 +83,8 @@ class Header extends React.Component {
           </Text>
         </StyledLink>
         <StyledWrapper>
-          {currentUser ? (
-            <Button onClick={this.handleSignOut} secondary>
+          {user ? (
+            <Button secondary onClick={this.handlelogout}>
               Sign out
             </Button>
           ) : (
@@ -80,12 +100,5 @@ class Header extends React.Component {
     );
   }
 }
-
-Header.propTypes = {
-  currentUser: PropTypes.object,
-};
-Header.defaultProps = {
-  currentUser: null,
-};
 
 export default Header;

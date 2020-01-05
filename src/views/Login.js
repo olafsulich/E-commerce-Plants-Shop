@@ -1,9 +1,9 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
-import { signInWithGoogle } from '../firebase/Firebase';
+import styled from 'styled-components';
 import Input from '../components/atoms/Input/Input';
 import Heading from '../components/atoms/Heading/Heading';
 import Button from '../components/atoms/Button/Button';
+import fire from '../firebase/Firebase';
 
 const StyledWrapper = styled.div`
   margin-top: 8rem;
@@ -27,14 +27,6 @@ const StyledForm = styled.form`
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-
-  ${({ signin }) =>
-    signin &&
-    css`
-      @media only screen and (min-width: 700px) {
-        margin-bottom: 5rem;
-      }
-    `}
 `;
 
 const StyledInput = styled(Input)`
@@ -61,50 +53,35 @@ const StyledButton = styled(Button)`
   margin: 3rem 2rem 0 0;
 `;
 
-// const Login = () => (
-//   <StyledWrapper>
-//     <StyledForm signin>
-//       <StyledHeading>Sign in</StyledHeading>
-//       <StyledInput type="email" placeholder="Email" />
-//       <StyledInput type="password" placeholder="Password" />
-//       <StyledButton secondary>Sign in</StyledButton>
-//     </StyledForm>
-//     <StyledForm>
-//       <StyledHeading>Sign up</StyledHeading>
-//       <StyledInput type="email" placeholder="Email" />
-//       <StyledInput type="password" placeholder="Password" />
-//       <StyledInput type="password" placeholder="Confirm password" />
-//       <StyledButton secondary>Sign up</StyledButton>
-//     </StyledForm>
-//   </StyledWrapper>
-// );
-
 class Login extends React.Component {
   state = {
     email: '',
     password: '',
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-
-    this.setState({ email: '', password: '' });
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleChange = e => {
-    const { value, name } = e.target;
-    this.setState({ [name]: value });
+  login = e => {
+    const { email, password } = this.state;
+    e.preventDefault();
+    fire.auth().signInWithEmailAndPassword(email, password);
+  };
+
+  signup = e => {
+    const { email, password } = this.state;
+    e.preventDefault();
+    fire.auth().createUserWithEmailAndPassword(email, password);
   };
 
   render() {
-    const { email, password } = this.state;
     return (
       <StyledWrapper onSubmit={this.handleSubmit}>
         <StyledForm signin>
           <StyledHeading>Sign in</StyledHeading>
           <StyledInput
             name="email"
-            value={email}
             type="email"
             required
             placeholder="Email"
@@ -112,18 +89,14 @@ class Login extends React.Component {
           />
           <StyledInput
             name="password"
-            value={password}
             required
             type="password"
             placeholder="Password"
             onChange={this.handleChange}
           />
           <StyledButtonsWrapper>
-            <StyledButton type="submit" secondary>
+            <StyledButton type="submit" onClick={this.login} secondary>
               Sign in
-            </StyledButton>
-            <StyledButton onClick={signInWithGoogle} secondary google>
-              Google
             </StyledButton>
           </StyledButtonsWrapper>
         </StyledForm>
@@ -131,7 +104,6 @@ class Login extends React.Component {
           <StyledHeading>Sign up</StyledHeading>
           <StyledInput
             name="email"
-            value={email}
             type="email"
             required
             placeholder="Email"
@@ -139,21 +111,12 @@ class Login extends React.Component {
           />
           <StyledInput
             name="password"
-            value={password}
             required
             type="password"
             placeholder="Password"
             onChange={this.handleChange}
           />
-          <StyledInput
-            name="password"
-            value={password}
-            required
-            type="password"
-            placeholder="Confirm password"
-            onChange={this.handleChange}
-          />
-          <StyledButton type="submit" secondary>
+          <StyledButton onClick={this.signup} type="submit" secondary>
             Sign up
           </StyledButton>
         </StyledForm>

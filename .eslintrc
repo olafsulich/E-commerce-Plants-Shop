@@ -5,7 +5,9 @@
     "jest": true
   },
   "globals": {
-    "document": true
+    "document": true,
+    "localStorage": true,
+    "fetch": true
   },
   "rules": {
     "react/forbid-prop-types": 0,
