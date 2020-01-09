@@ -5,17 +5,16 @@ const Text = styled.p`
     main &&
     css`
       color: ${({ theme }) => theme.fontColorText};
-      font-size: 1.2rem;
-      line-height: 1.8rem;
+      font-size: 1.5rem;
+      line-height: 2.25rem;
       font-weight: ${({ theme }) => theme.light};
       padding: 1rem 0;
       text-align: left;
-      width: 60%;
     `}
   ${({ logo }) =>
     logo &&
     css`
-      color: ${({ theme }) => theme.fontColorHeader};
+      color: ${({ theme }) => theme.fontColorHeading};
       font-size: 1.5rem;
       text-transform: uppercase;
       cursor: pointer;

@@ -13,9 +13,21 @@ const StyledButton = styled.button`
   ${({ active }) =>
     active &&
     css`
-      color: ${({ theme }) => theme.fontColorPrimary};
-      font-weight: ${({ theme }) => theme.bold};
-      border-bottom: 2px solid ${({ theme }) => theme.fontColorPrimary};
+      position: relative;
+      color: ${({ theme }) => theme.fontColorHeading};
+      font-size: 1.2rem;
+      font-weight: ${({ theme }) => theme.regular};
+      margin-left: 0.6rem;
+      ::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        background-color: ${({ theme }) => theme.primaryColor};
+        z-index: -1;
+        top: 60%;
+        left: 15%;
+      }
     `};
   ${({ secondary }) =>
     secondary &&
@@ -58,11 +70,13 @@ const StyledButton = styled.button`
     cart &&
     css`
       background-image: url(${CartIcon});
-      width: 32px;
-      height: 32px;
+      ${'' /* width: 32px;
+      height: 32px; */}
+      width: 2.6rem;
+      height: 2.6rem;
       margin: 0 0.8rem;
 
-      @media only screen and (min-width: 700px) {
+      ${'' /* @media only screen and (min-width: 700px) {
         width: 38px;
         height: 38px;
         margin: 0 0.8rem;
@@ -75,7 +89,7 @@ const StyledButton = styled.button`
       @media only screen and (min-width: 1100px) {
         width: 42px;
         height: 42px;
-      }
+      } */}
     `}
 `;
 export default StyledButton;

@@ -15,14 +15,6 @@ const SelectWrapper = styled.div`
   }
 `;
 
-// const Label = styled.label`
-//   display: block;
-//   font-size: 0.95rem;
-//   font-weight: ${({ theme }) => theme.regular};
-//   text-align: start;
-//   padding: 0.8rem 0;
-// `;
-
 const Select = styled.select`
   background: ${({ theme }) => theme.secondaryColor};
   border: none;
@@ -65,8 +57,9 @@ const Option = styled.option`
 const SelectInput = () => (
   <SelectWrapper>
     <Select id="select">
-      <Option>provenance</Option>
-      <Option>option 3</Option>
+      <Option>all</Option>
+      <Option>home</Option>
+      <Option>outdoor</Option>
     </Select>
   </SelectWrapper>
 );

@@ -1,13 +1,13 @@
 import React from 'react';
-import Navigation from '../components/organisms/Nav';
 import Products from '../components/organisms/Products';
 import Hero from '../components/organisms/Hero';
+import Preferences from '../components/molecules/Preferences';
 
 const Home = () => (
   <>
     <main>
       <Hero />
-      <Navigation />
+      <Preferences />
       <Products />
     </main>
   </>

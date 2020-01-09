@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const InputWrapper = styled.div`
-  margin: 2rem 0;
   width: 24rem;
 
   @media only screen and (min-width: 500px) {

@@ -3,25 +3,46 @@ import styled from 'styled-components';
 import Input from '../components/atoms/Input/Input';
 import Heading from '../components/atoms/Heading/Heading';
 import Button from '../components/atoms/Button/Button';
-import fire from '../firebase/Firebase';
+import Heroplant from '../components/atoms/Plant/Plant';
+import { fire } from '../firebase/Firebase';
+import Text from '../components/atoms/Text/Text';
 
 const StyledWrapper = styled.div`
-  margin-top: 8rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+`;
+
+const StyledPlantWrapper = styled.div`
+  background: hsl(153, 91%, 48%, 40%);
+  width: 50%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  padding: 0 3rem;
+  padding: 1rem 3rem 13rem 3rem;
+`;
 
-  @media only screen and (min-width: 700px) {
-    flex-direction: row;
-  }
-  @media only screen and (min-width: 1500px) {
-    margin: 3rem 12rem;
-  }
+const StyledLogoWrapper = styled.header`
+  margin: 0 0 0rem 1rem;
+  width: 100%;
+`;
+
+const StyledFormWrapper = styled.div`
+  padding-top: 13rem;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
 `;
 
 const StyledForm = styled.form`
+  width: 50%;
   padding: 3rem 1rem;
   display: flex;
   justify-content: flex-start;
@@ -38,6 +59,13 @@ const StyledInput = styled(Input)`
     font-size: 1rem;
   }
 `;
+
+const StyledHeadingWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25rem;
+`;
 const StyledHeading = styled(Heading)`
   text-transform: uppercase;
   font-size: 4rem;
@@ -50,76 +78,127 @@ const StyledButtonsWrapper = styled.div`
 `;
 const StyledButton = styled(Button)`
   width: 10rem;
-  margin: 3rem 2rem 0 0;
+  margin: 2rem 2rem 0 0;
+`;
+
+const StyledFooter = styled.footer`
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+`;
+
+const StyledTextWrapper = styled.div`
+  margin-top: 2rem;
+  width: 25rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 class Login extends React.Component {
   state = {
     email: '',
     password: '',
+    pageWidth: window.innerWidth,
+    newAccount: false,
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions);
+  }
+
+  updateDimensions = () => {
+    this.setState({ pageWidth: window.innerWidth });
   };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  login = e => {
+  handleNewAccount = e => {
+    e.preventDefault();
+    this.setState(prevState => ({
+      newAccount: !prevState.newAccount,
+    }));
+  };
+
+  handleSignin = e => {
     const { email, password } = this.state;
     e.preventDefault();
     fire.auth().signInWithEmailAndPassword(email, password);
   };
 
-  signup = e => {
+  handleSignup = e => {
     const { email, password } = this.state;
     e.preventDefault();
     fire.auth().createUserWithEmailAndPassword(email, password);
   };
 
   render() {
+    const { pageWidth, newAccount } = this.state;
     return (
       <StyledWrapper onSubmit={this.handleSubmit}>
-        <StyledForm signin>
-          <StyledHeading>Sign in</StyledHeading>
-          <StyledInput
-            name="email"
-            type="email"
-            required
-            placeholder="Email"
-            onChange={this.handleChange}
-          />
-          <StyledInput
-            name="password"
-            required
-            type="password"
-            placeholder="Password"
-            onChange={this.handleChange}
-          />
-          <StyledButtonsWrapper>
-            <StyledButton type="submit" onClick={this.login} secondary>
-              Sign in
-            </StyledButton>
-          </StyledButtonsWrapper>
-        </StyledForm>
-        <StyledForm>
-          <StyledHeading>Sign up</StyledHeading>
-          <StyledInput
-            name="email"
-            type="email"
-            required
-            placeholder="Email"
-            onChange={this.handleChange}
-          />
-          <StyledInput
-            name="password"
-            required
-            type="password"
-            placeholder="Password"
-            onChange={this.handleChange}
-          />
-          <StyledButton onClick={this.signup} type="submit" secondary>
-            Sign up
-          </StyledButton>
-        </StyledForm>
+        {pageWidth >= 800 ? (
+          <StyledPlantWrapper>
+            <StyledLogoWrapper>
+              <Text logo as="h1">
+                Plants & Home
+              </Text>
+            </StyledLogoWrapper>
+            <Heroplant />
+          </StyledPlantWrapper>
+        ) : (
+          ''
+        )}
+
+        <StyledFormWrapper>
+          <StyledForm signin>
+            <StyledHeadingWrapper>
+              <StyledHeading>{newAccount ? 'Sign up' : 'Sign in'}</StyledHeading>
+            </StyledHeadingWrapper>
+            <StyledInput
+              name="email"
+              type="email"
+              placeholder="Email"
+              onChange={this.handleChange}
+            />
+            <StyledInput
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
+            <StyledButtonsWrapper>
+              <StyledButton
+                type="submit"
+                onClick={newAccount ? this.handleSignup : this.handleSignin}
+                secondary
+              >
+                {newAccount ? 'Sign up' : 'Sign in'}
+              </StyledButton>
+            </StyledButtonsWrapper>
+            <StyledTextWrapper>
+              <Text>{newAccount ? 'Have account?' : "Haven't got account?"}</Text>
+              <Button onClick={this.handleNewAccount} active>
+                {newAccount ? 'Sign in' : 'Sign up'}
+              </Button>
+            </StyledTextWrapper>
+          </StyledForm>
+          <StyledFooter>
+            <Text as="span">
+              Made with{' '}
+              <span role="img" aria-label="Heart icon">
+                💚
+              </span>{' '}
+              by Olaf Sulich
+            </Text>
+          </StyledFooter>
+        </StyledFormWrapper>
       </StyledWrapper>
     );
   }

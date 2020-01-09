@@ -5,7 +5,8 @@ import Text from '../atoms/Text/Text';
 import Button from '../atoms/Button/Button';
 import Cart from '../molecules/Cart';
 import CartIcon from '../../assets/svg/cart.svg';
-import fire from '../../firebase/Firebase';
+import LogoutIcon from '../../assets/svg/logout.svg';
+import { fire } from '../../firebase/Firebase';
 
 const StyledCartButton = styled(Button)`
   background-image: url(${CartIcon});
@@ -39,13 +40,16 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
+const StyledLogoutButton = styled(Button)`
+  background-image: url(${LogoutIcon});
+  width: 2.2rem;
+  height: 2.2rem;
+`;
+
 class Header extends React.Component {
   state = {
     isCartOpen: false,
-    user: {},
   };
-
-  unsubscribeFromAuth = null;
 
   handleCartOpen = () => {
     this.setState(prevState => ({
@@ -53,28 +57,12 @@ class Header extends React.Component {
     }));
   };
 
-  componentDidMount = () => {
-    this.authListener();
-  };
-
-  authListener = () => {
-    fire.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ user });
-        localStorage.setItem('user', user.uid);
-      } else {
-        this.setState({ user: null });
-        localStorage.removeItem('user');
-      }
-    });
-  };
-
   handlelogout = () => {
     fire.auth().signOut();
   };
 
   render() {
-    const { isCartOpen, user } = this.state;
+    const { isCartOpen } = this.state;
     return (
       <StyledHeader>
         <StyledLink to="/">
@@ -83,18 +71,9 @@ class Header extends React.Component {
           </Text>
         </StyledLink>
         <StyledWrapper>
-          {user ? (
-            <Button secondary onClick={this.handlelogout}>
-              Sign out
-            </Button>
-          ) : (
-            <StyledLink to="/login">
-              <Button secondary>Sign in</Button>
-            </StyledLink>
-          )}
-
           <StyledCartButton cart onClick={this.handleCartOpen} />
           <Cart isVisible={isCartOpen} />
+          <StyledLogoutButton onClick={this.handlelogout} />
         </StyledWrapper>
       </StyledHeader>
     );

@@ -4,7 +4,17 @@ import RangeInput from '../atoms/RangeInput/RangeInput';
 import StyledInput from '../atoms/Input/Input';
 import SelectInput from '../atoms/SelectInput/SelectInput';
 
+const StyledFormWrapper = styled.div`
+  margin-top: 3rem;
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
 const StyledWrapper = styled.form`
+  margin-top: 3rem;
   width: 100%;
   padding: 3rem 1rem;
   display: flex;
@@ -22,10 +32,12 @@ const StyledWrapper = styled.form`
 `;
 
 const Preferences = () => (
-  <StyledWrapper>
-    <StyledInput search placeholder="search plants"></StyledInput>
-    <SelectInput />
-    <RangeInput />
-  </StyledWrapper>
+  <StyledFormWrapper>
+    <StyledWrapper>
+      <StyledInput search placeholder="search plants"></StyledInput>
+      <SelectInput />
+      <RangeInput />
+    </StyledWrapper>
+  </StyledFormWrapper>
 );
 export default Preferences;
