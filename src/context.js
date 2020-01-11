@@ -35,9 +35,8 @@ class PlantProvider extends React.Component {
 
   handleChangeType = e => {
     e.preventDefault();
-    const target = e.target;
-    const name = target;
-    const value = target.value;
+    const name = e.target.name;
+    const value = e.target.value;
     this.setState(
       {
         [name]: value,
@@ -48,9 +47,8 @@ class PlantProvider extends React.Component {
 
   handleChangeSearch = e => {
     e.preventDefault();
-    const target = e.target;
-    const name = target;
-    const value = target.value;
+    const name = e.target.name;
+    const value = e.target.value;
     this.setState(
       {
         [name]: value,
@@ -61,9 +59,8 @@ class PlantProvider extends React.Component {
 
   handleChangeRange = e => {
     e.preventDefault();
-    const target = e.target;
-    const name = target;
-    const value = target.value;
+    const name = e.target.name;
+    const value = e.target.value;
     this.setState(
       {
         [name]: value,
