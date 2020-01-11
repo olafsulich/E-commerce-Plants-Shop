@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import magnifierIcon from '../../../assets/svg/magify.svg';
+import styled from 'styled-components';
 
 const StyledInput = styled.input`
   width: 24rem;
@@ -19,19 +18,6 @@ const StyledInput = styled.input`
     letter-spacing: 1px;
     color: ${({ theme }) => theme.fontColorText};
   }
-  ${({ search }) =>
-    search &&
-    css`
-      margin: 2rem 0;
-      border-radius: 50px;
-      background-image: url(${magnifierIcon});
-      background-size: 15px;
-      background-position: 90% 50%;
-      background-repeat: no-repeat;
-      @media only screen and (min-width: 700px) {
-        margin: 0 2rem;
-      }
-    `};
 `;
 
 export default StyledInput;

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { PlantContext } from '../../../context';
 import Arrow from '../../../assets/svg/arrow.svg';
 
 const SelectWrapper = styled.div`
@@ -15,7 +17,7 @@ const SelectWrapper = styled.div`
   }
 `;
 
-const Select = styled.select`
+const StyledSelect = styled.select`
   background: ${({ theme }) => theme.secondaryColor};
   border: none;
   width: 100%;
@@ -40,7 +42,7 @@ const Select = styled.select`
   font-size: 1.3rem;
 `;
 
-const Option = styled.option`
+const StyledOption = styled.option`
   width: 100%;
   font-size: 1.1rem;
   text-transform: capitalize;
@@ -54,13 +56,33 @@ const Option = styled.option`
   }
 `;
 
-const SelectInput = () => (
-  <SelectWrapper>
-    <Select id="select">
-      <Option>all</Option>
-      <Option>home</Option>
-      <Option>outdoor</Option>
-    </Select>
-  </SelectWrapper>
-);
+const SelectInput = props => {
+  const context = useContext(PlantContext);
+  const { plants } = context;
+  const getUnique = (items, value) => {
+    return [...new Set(items.map(item => item[value]))];
+  };
+  let types = getUnique(plants, 'type');
+  types = ['all', ...types];
+  const { name, onChange, value } = props;
+  types = types.map(item => {
+    return (
+      <StyledOption value={item} key={item}>
+        {item}
+      </StyledOption>
+    );
+  });
+  return (
+    <SelectWrapper>
+      <StyledSelect name={name} onChange={onChange} value={value}>
+        {types}
+      </StyledSelect>
+    </SelectWrapper>
+  );
+};
+SelectInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+};
 export default SelectInput;

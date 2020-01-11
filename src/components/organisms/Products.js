@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { PlantContext } from '../../context';
 import Product from '../molecules/Product';
+import Text from '../atoms/Text/Text';
 
 const StyledWrapper = styled.section`
   margin: 0 3rem;
@@ -25,18 +26,31 @@ const StyledWrapper = styled.section`
     margin: 0 auto;
   }
 `;
+const StyledNoMatchWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-class Products extends React.Component {
-  static contextType = PlantContext;
-
-  render() {
-    let { plants } = this.context;
-    plants = plants.map(plant => {
-      return <Product key={plant.id} title={plant.title} src={plant.src} slug={plant.slug} />;
-    });
-
-    return <StyledWrapper>{plants}</StyledWrapper>;
+const Products = ({ plants }) => {
+  if (plants.length === 0) {
+    return (
+      <StyledNoMatchWrapper>
+        <Text main>No plants matched your search</Text>
+      </StyledNoMatchWrapper>
+    );
   }
-}
+  return (
+    <StyledWrapper>
+      {plants.map(plant => (
+        <Product key={plant.id} title={plant.title} src={plant.src} slug={plant.slug} />
+      ))}
+    </StyledWrapper>
+  );
+};
+Products.propTypes = {
+  plants: PropTypes.array.isRequired,
+};
 
 export default Products;

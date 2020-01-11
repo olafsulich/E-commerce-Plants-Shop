@@ -20,7 +20,8 @@
       {
         "extensions": [".js"]
       }
-    ]
+    ],
+    "prefer-destructuring": 0
   },
   "settings": {
     "import/resolver": {

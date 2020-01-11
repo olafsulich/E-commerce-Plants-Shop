@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useForm } from 'react-hook-form';
+import { fire } from '../firebase/Firebase';
 import Input from '../components/atoms/Input/Input';
 import Heading from '../components/atoms/Heading/Heading';
 import Button from '../components/atoms/Button/Button';
-import Heroplant from '../components/atoms/Plant/Plant';
-import { fire } from '../firebase/Firebase';
+import PlantHalfPage from '../components/molecules/PlantHalfPage';
 import Text from '../components/atoms/Text/Text';
 
 const StyledWrapper = styled.div`
+  overflow: hidden;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -15,30 +17,17 @@ const StyledWrapper = styled.div`
   flex-direction: row;
 `;
 
-const StyledPlantWrapper = styled.div`
-  background: hsl(153, 91%, 48%, 40%);
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-  padding: 1rem 3rem 13rem 3rem;
-`;
-
-const StyledLogoWrapper = styled.header`
-  margin: 0 0 0rem 1rem;
-  width: 100%;
-`;
-
 const StyledFormWrapper = styled.div`
-  padding-top: 13rem;
+  margin-top: 6rem;
   width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
+  @media only screen and (min-width: 800px) {
+    margin-top: 12rem;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -51,6 +40,7 @@ const StyledForm = styled.form`
 `;
 
 const StyledInput = styled(Input)`
+  position: relative;
   padding: 1.2rem 0.5rem;
   margin: 1rem 0;
   ::placeholder {
@@ -85,6 +75,7 @@ const StyledFooter = styled.footer`
   width: 100%;
   text-align: center;
   font-size: 1.2rem;
+  margin-bottom: 3rem;
 `;
 
 const StyledTextWrapper = styled.div`
@@ -96,112 +87,119 @@ const StyledTextWrapper = styled.div`
   justify-content: center;
 `;
 
-class Login extends React.Component {
-  state = {
-    email: '',
-    password: '',
-    pageWidth: window.innerWidth,
-    newAccount: false,
+const Login = () => {
+  const { register, handleSubmit, errors } = useForm();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [pageWidth, setPageWidth] = useState(window.innerWidth);
+  const [newAccount, setNewAccount] = useState(false);
+
+  const updateDimensions = () => {
+    setPageWidth(window.innerWidth);
   };
 
-  componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions);
-  }
+  useEffect(() => {
+    window.addEventListener('resize', updateDimensions);
+    return () => {
+      window.removeEventListener('resize', updateDimensions);
+    };
+  }, []);
 
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
-  }
-
-  updateDimensions = () => {
-    this.setState({ pageWidth: window.innerWidth });
+  const handleEmailChange = e => {
+    setEmail(e.target.value);
   };
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  const handlePasswordChange = e => {
+    setPassword(e.target.value);
   };
 
-  handleNewAccount = e => {
+  const handleNewAccount = e => {
     e.preventDefault();
-    this.setState(prevState => ({
-      newAccount: !prevState.newAccount,
-    }));
+    setNewAccount(prevNewAccount => !prevNewAccount);
   };
 
-  handleSignin = e => {
-    const { email, password } = this.state;
-    e.preventDefault();
-    fire.auth().signInWithEmailAndPassword(email, password);
+  const handleSignin = () => {
+    fire
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      /* eslint-disable */
+      .catch(error => alert(error.message));
   };
 
-  handleSignup = e => {
-    const { email, password } = this.state;
-    e.preventDefault();
+  const handleSignup = () => {
     fire.auth().createUserWithEmailAndPassword(email, password);
   };
 
-  render() {
-    const { pageWidth, newAccount } = this.state;
-    return (
-      <StyledWrapper onSubmit={this.handleSubmit}>
-        {pageWidth >= 800 ? (
-          <StyledPlantWrapper>
-            <StyledLogoWrapper>
-              <Text logo as="h1">
-                Plants & Home
-              </Text>
-            </StyledLogoWrapper>
-            <Heroplant />
-          </StyledPlantWrapper>
-        ) : (
-          ''
-        )}
+  return (
+    <StyledWrapper>
+      {pageWidth >= 800 ? <PlantHalfPage /> : null}
 
-        <StyledFormWrapper>
-          <StyledForm signin>
-            <StyledHeadingWrapper>
-              <StyledHeading>{newAccount ? 'Sign up' : 'Sign in'}</StyledHeading>
-            </StyledHeadingWrapper>
-            <StyledInput
-              name="email"
-              type="email"
-              placeholder="Email"
-              onChange={this.handleChange}
-            />
-            <StyledInput
-              name="password"
-              type="password"
-              placeholder="Password"
-              onChange={this.handleChange}
-            />
-            <StyledButtonsWrapper>
-              <StyledButton
-                type="submit"
-                onClick={newAccount ? this.handleSignup : this.handleSignin}
-                secondary
-              >
-                {newAccount ? 'Sign up' : 'Sign in'}
-              </StyledButton>
-            </StyledButtonsWrapper>
-            <StyledTextWrapper>
-              <Text>{newAccount ? 'Have account?' : "Haven't got account?"}</Text>
-              <Button onClick={this.handleNewAccount} active>
-                {newAccount ? 'Sign in' : 'Sign up'}
-              </Button>
-            </StyledTextWrapper>
-          </StyledForm>
-          <StyledFooter>
-            <Text as="span">
-              Made with{' '}
-              <span role="img" aria-label="Heart icon">
-                💚
-              </span>{' '}
-              by Olaf Sulich
+      <StyledFormWrapper>
+        {/* <Text>email:TestUser@gmail.com password:TestUser1</Text> */}
+        <StyledForm signin onSubmit={handleSubmit(newAccount ? handleSignup : handleSignin)}>
+          <StyledHeadingWrapper>
+            <StyledHeading>{newAccount ? 'Sign up' : 'Sign in'}</StyledHeading>
+          </StyledHeadingWrapper>
+          <StyledInput
+            name="email"
+            placeholder="Email"
+            onChange={handleEmailChange}
+            ref={register({
+              required: true,
+              pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+            })}
+          />
+          {errors.email && errors.email.type === 'required' && (
+            <Text errorMessage>Email is required</Text>
+          )}
+          {errors.email && errors.email.type === 'pattern' && (
+            <Text errorMessage>Email is invalid please add @</Text>
+          )}
+
+          <StyledInput
+            name="password"
+            placeholder="Password"
+            type="password"
+            onChange={handlePasswordChange}
+            ref={register({
+              required: true,
+              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+            })}
+          />
+          {errors.password && errors.password.type === 'required' && (
+            <Text errorMessage>Password is required</Text>
+          )}
+          {errors.password && errors.password.type === 'pattern' && (
+            <Text errorMessage>
+              Password should contain min. 8 characters, one uppercase letter, one lowercase letter
+              and number
             </Text>
-          </StyledFooter>
-        </StyledFormWrapper>
-      </StyledWrapper>
-    );
-  }
-}
+          )}
+
+          <StyledButtonsWrapper>
+            <StyledButton type="submit" secondary>
+              {newAccount ? 'Sign up' : 'Sign in'}
+            </StyledButton>
+          </StyledButtonsWrapper>
+          <StyledTextWrapper>
+            <Text>{newAccount ? 'Have account?' : "Haven't got account?"}</Text>
+            <Button onClick={handleNewAccount} active>
+              {newAccount ? 'Sign in' : 'Sign up'}
+            </Button>
+          </StyledTextWrapper>
+        </StyledForm>
+        <StyledFooter>
+          <Text as="span">
+            Made with{' '}
+            <span role="img" aria-label="Heart icon">
+              💚
+            </span>{' '}
+            by Olaf Sulich
+          </Text>
+        </StyledFooter>
+      </StyledFormWrapper>
+    </StyledWrapper>
+  );
+};
 
 export default Login;

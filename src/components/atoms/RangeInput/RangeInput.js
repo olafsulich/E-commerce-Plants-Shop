@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const InputWrapper = styled.div`
@@ -125,10 +125,29 @@ const Label = styled.label`
   text-align: start;
 `;
 
-const RangeInput = () => (
-  <InputWrapper>
-    <Label htmlFor="range">Price range</Label>
-    <Input type="range" min={4.99} max={29.99} id="range" />
-  </InputWrapper>
-);
+const RangeInput = props => {
+  const { onChange, minPrice, maxPrice, price, value, name } = props;
+  return (
+    <InputWrapper>
+      <Label htmlFor="range">Price range ${price}</Label>
+      <Input
+        name={name}
+        type="range"
+        min={minPrice}
+        max={maxPrice}
+        value={value}
+        id="range"
+        onChange={onChange}
+      />
+    </InputWrapper>
+  );
+};
+RangeInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.any.isRequired,
+  minPrice: PropTypes.number.isRequired,
+  maxPrice: PropTypes.number.isRequired,
+  price: PropTypes.any.isRequired,
+};
 export default RangeInput;

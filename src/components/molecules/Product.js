@@ -3,29 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-// const StyledWrapper = styled.section`
-//   margin: 0 3rem;
-//   display: grid;
-//   grid-template-columns: 1fr;
-//   justify-items: center;
-//   align-items: center;
-//   grid-column-gap: 2rem;
-//   max-width: 100%;
-//   @media only screen and (min-width: 550px) {
-//     grid-template-columns: 1fr 1fr;
-//   }
-//   @media only screen and (min-width: 1000px) {
-//     grid-column-gap: 3rem;
-//     max-width: 70vw;
-//     margin: 0 auto;
-//   }
-//   @media only screen and (min-width: 1600px) {
-//     grid-column-gap: 3rem;
-//     max-width: 60vw;
-//     margin: 0 auto;
-//   }
-// `;
-
 const StyledTitleWrapper = styled.div`
   position: relative;
   display: block;

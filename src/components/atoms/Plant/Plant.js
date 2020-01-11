@@ -4,10 +4,11 @@ import Plant from '../../../assets/svg/plant.svg';
 import Morphing from '../../../assets/svg/morphing.svg';
 
 const StyledPlantWrapper = styled.figure`
-  width: 25rem;
-  height: 27rem;
   margin-top: 2rem;
   position: relative;
+
+  width: 25rem;
+  height: 27rem;
   @media only screen and (min-width: 700px) {
     width: 30rem;
     height: 34rem;
@@ -33,7 +34,7 @@ const StyledPlant = styled.img`
 `;
 
 const Heroplant = () => (
-  <StyledPlantWrapper>
+  <StyledPlantWrapper product>
     <StyledMorphing src={Morphing} />
     <StyledPlant src={Plant} />
   </StyledPlantWrapper>

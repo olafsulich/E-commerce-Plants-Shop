@@ -8,4 +8,5 @@ export const theme = {
   light: 400,
   regular: 500,
   bold: 700,
+  height: window.innerHeight * 0.01,
 };

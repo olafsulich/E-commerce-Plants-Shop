@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { PlantContext } from '../../context';
 import RangeInput from '../atoms/RangeInput/RangeInput';
-import StyledInput from '../atoms/Input/Input';
 import SelectInput from '../atoms/SelectInput/SelectInput';
+import Search from '../atoms/Input/Search';
 
 const StyledFormWrapper = styled.div`
   margin-top: 3rem;
@@ -31,13 +32,39 @@ const StyledWrapper = styled.form`
   }
 `;
 
-const Preferences = () => (
-  <StyledFormWrapper>
-    <StyledWrapper>
-      <StyledInput search placeholder="search plants"></StyledInput>
-      <SelectInput />
-      <RangeInput />
-    </StyledWrapper>
-  </StyledFormWrapper>
-);
+const Preferences = () => {
+  const context = useContext(PlantContext);
+  const {
+    handleChange,
+    handleChangeSearch,
+    handleChangeRange,
+    type,
+    price,
+    minPrice,
+    maxPrice,
+    searchName,
+  } = context;
+  return (
+    <StyledFormWrapper>
+      <StyledWrapper>
+        <Search
+          search
+          name="searchName"
+          value={searchName}
+          placeholder="search plants"
+          onChange={handleChangeSearch}
+        ></Search>
+        <SelectInput name="type" value={type} onChange={handleChange} />
+        <RangeInput
+          name="price"
+          onChange={handleChangeRange}
+          value={price}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+          price={price}
+        />
+      </StyledWrapper>
+    </StyledFormWrapper>
+  );
+};
 export default Preferences;

@@ -19,5 +19,14 @@ const Text = styled.p`
       text-transform: uppercase;
       cursor: pointer;
     `};
+  ${({ errorMessage }) =>
+    errorMessage &&
+    css`
+      display: block;
+      color: red;
+      font-size: 1.2rem;
+      min-width: 200px;
+      text-align: center;
+    `};
 `;
 export default Text;

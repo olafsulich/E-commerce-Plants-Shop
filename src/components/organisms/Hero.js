@@ -28,6 +28,7 @@ const StyledWrapperHeading = styled.article`
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
+  margin-top: 4rem;
   @media only screen and (min-width: 700px) {
     margin-bottom: 13%;
   }

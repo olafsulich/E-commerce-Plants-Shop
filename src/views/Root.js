@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { PlantProvider } from '../context';
 import MainTemplate from '../templates/MainTemplate';
-import Header from '../components/organisms/Header';
 import Home from './Home';
 import SinglePlant from './SinglePlant';
 import Login from './Login';
@@ -43,7 +42,6 @@ class Root extends React.Component {
                 <Login />
               ) : (
                 <>
-                  <Header />
                   <Route exact path="/" component={Home} />
                   <Route exact path="/checkout" component={Checkout} />
                   <Route exact path="/:slug" component={SinglePlant} />
