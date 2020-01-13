@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../atoms/Button/Button';
 import CartProduct from './CartProduct';
-import { PlantContext } from '../../context/PlantContext';
+import { CartContext } from '../../context/CartContext';
 
 const StyledWrapper = styled.div`
   z-index: 100;
@@ -53,7 +53,7 @@ const StyledButton = styled(Button)`
 `;
 
 const Cart = ({ isVisible }) => {
-  const { cartItems } = useContext(PlantContext);
+  const { cartItems } = useContext(CartContext);
 
   return (
     <StyledWrapper isVisible={isVisible}>

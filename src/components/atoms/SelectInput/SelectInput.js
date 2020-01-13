@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { PlantContext } from '../../../context/PlantContext';
+import { CartContext } from '../../../context/CartContext';
+
 import Arrow from '../../../assets/svg/arrow.svg';
 
 const SelectWrapper = styled.div`
@@ -57,7 +58,7 @@ const StyledOption = styled.option`
 `;
 
 const SelectInput = props => {
-  const context = useContext(PlantContext);
+  const context = useContext(CartContext);
   const { plants } = context;
   const getUnique = (items, value) => {
     return [...new Set(items.map(item => item[value]))];

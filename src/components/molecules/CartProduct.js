@@ -55,6 +55,6 @@ const CartProduct = ({ plant: { src, title, price, quantity } }) => (
   </StyledWrapper>
 );
 CartProduct.propTypes = {
-  plant: PropTypes.array.isRequired,
+  plant: PropTypes.object.isRequired,
 };
 export default CartProduct;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
-import { PlantContext } from '../context/PlantContext';
+import { CartContext } from '../context/CartContext';
 import PlantHalfPage from '../components/molecules/PlantHalfPage';
 import CheckoutItem from '../components/molecules/CheckoutItem';
 import Button from '../components/atoms/Button/Button';
@@ -85,7 +85,7 @@ const StyledHeaderIconsWrapper = styled.div`
 `;
 const Checkout = () => {
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
-  const { cartItems, addItem, removeItem, cartTotal } = useContext(PlantContext);
+  const { cartItems, addItem, removeItem, cartTotal } = useContext(CartContext);
 
   const updateDimensions = () => {
     setPageWidth(window.innerWidth);

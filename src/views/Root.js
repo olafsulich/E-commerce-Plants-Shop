@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { PlantProvider } from '../context/PlantContext';
+import CartProvider from '../context/CartContext';
 import MainTemplate from '../templates/MainTemplate';
 import Home from './Home';
 import SinglePlant from './SinglePlant';
@@ -34,7 +34,7 @@ class Root extends React.Component {
   render() {
     const { user } = this.state;
     return (
-      <PlantProvider>
+      <CartProvider>
         <BrowserRouter>
           <MainTemplate>
             <Switch>
@@ -50,7 +50,7 @@ class Root extends React.Component {
             </Switch>
           </MainTemplate>
         </BrowserRouter>
-      </PlantProvider>
+      </CartProvider>
     );
   }
 }

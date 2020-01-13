@@ -21,6 +21,7 @@
         "extensions": [".js"]
       }
     ],
+    "no-unused-vars": 0,
     "prefer-destructuring": 0
   },
   "settings": {

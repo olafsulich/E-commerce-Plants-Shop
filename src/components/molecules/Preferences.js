@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { PlantContext } from '../../context/PlantContext';
+import { CartContext } from '../../context/CartContext';
+
 import RangeInput from '../atoms/RangeInput/RangeInput';
 import SelectInput from '../atoms/SelectInput/SelectInput';
 import Search from '../atoms/Input/Search';
@@ -33,11 +34,11 @@ const StyledWrapper = styled.form`
 `;
 
 const Preferences = () => {
-  const context = useContext(PlantContext);
+  const context = useContext(CartContext);
   const {
     handleChange,
-    handleChangeSearch,
-    handleChangeRange,
+    // handleChangeSearch,
+    // handleChangeRange,
     type,
     price,
     minPrice,
@@ -52,12 +53,12 @@ const Preferences = () => {
           name="searchName"
           value={searchName}
           placeholder="search plants"
-          onChange={handleChangeSearch}
+          onChange={handleChange}
         ></Search>
         <SelectInput name="type" value={type} onChange={handleChange} />
         <RangeInput
           name="price"
-          onChange={handleChangeRange}
+          onChange={handleChange}
           value={price}
           minPrice={minPrice}
           maxPrice={maxPrice}

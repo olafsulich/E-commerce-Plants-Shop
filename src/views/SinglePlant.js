@@ -9,7 +9,7 @@ import PlantHalfPage from '../components/molecules/PlantHalfPage';
 import Header from '../components/organisms/Header';
 import HeaderIcons from '../components/molecules/HeaderIcons';
 import FlowerPots from '../components/molecules/FlowerPots';
-import { PlantContext } from '../context/PlantContext';
+import { CartContext } from '../context/CartContext';
 
 const StyledWrapper = styled.div`
   height: 100vh;
@@ -190,7 +190,7 @@ const StyledLink = styled(Link)`
 // };
 
 class SinglePlant extends React.Component {
-  static contextType = PlantContext;
+  static contextType = CartContext;
 
   constructor(props) {
     super(props);
@@ -221,7 +221,7 @@ class SinglePlant extends React.Component {
 
   render() {
     const { slug } = this.state;
-    const { getPlant, handleAddItem } = this.context;
+    const { getPlant, addItem } = this.context;
     const plant = getPlant(slug);
     if (!plant) {
       return (
@@ -265,7 +265,7 @@ class SinglePlant extends React.Component {
               <FlowerPots />
               <StyledPaymentWrapper>
                 <StyledTypeText price>${price}</StyledTypeText>
-                <StyledButton secondary onClick={() => handleAddItem(plant)}>
+                <StyledButton secondary onClick={() => addItem(plant)}>
                   Add to cart
                 </StyledButton>
               </StyledPaymentWrapper>

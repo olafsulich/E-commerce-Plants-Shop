@@ -40,18 +40,16 @@ class PlantProvider extends React.Component {
   }
 
   addItem = item => {
-    const { cartItemsCount, cartItems } = this.state;
+    const { cartItems } = this.state;
     this.setState({
       cartItems: addItemToCart(cartItems, item),
-      cartItemsCount: cartItemsCount + 1,
     });
   };
 
   removeItem = item => {
-    const { cartItemsCount, cartItems } = this.state;
+    const { cartItems } = this.state;
     this.setState({
       cartItems: removeItemFromCart(cartItems, item),
-      cartItemsCount: cartItemsCount - 1,
     });
   };
 

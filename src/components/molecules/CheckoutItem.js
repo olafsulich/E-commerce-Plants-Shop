@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../atoms/Button/Button';
-import { PlantContext } from '../../context/PlantContext';
+
+import { CartContext } from '../../context/CartContext';
 
 const StyledWrapper = styled.section`
   display: grid;
@@ -78,7 +79,7 @@ const StyledPrice = styled.span`
 
 const CheckoutItem = ({ plant }) => {
   const { title, src, price, quantity } = plant;
-  const { handleAddItem, handleRemoveItem, handleClearItemFromCart } = useContext(PlantContext);
+  const { addItem, removeItem, clearItemFromCart } = useContext(CartContext);
 
   return (
     <StyledWrapper>
@@ -87,21 +88,21 @@ const CheckoutItem = ({ plant }) => {
       </StyledProductImage>
       <StyledTitle>{title}</StyledTitle>
       <StyledQuantityWrapper>
-        <Button quantity onClick={() => handleRemoveItem(plant)}>
+        <Button quantity onClick={() => removeItem(plant)}>
           &#10094;
         </Button>
         <StyledQuantityValue>{quantity}</StyledQuantityValue>
-        <Button quantity onClick={() => handleAddItem(plant)}>
+        <Button quantity onClick={() => addItem(plant)}>
           &#10095;
         </Button>
       </StyledQuantityWrapper>
       <StyledPrice>${price}</StyledPrice>
-      <Button remove onClick={() => handleClearItemFromCart(plant)} />
+      <Button remove onClick={() => clearItemFromCart(plant)} />
     </StyledWrapper>
   );
 };
 
 CheckoutItem.propTypes = {
-  plant: PropTypes.array.isRequired,
+  plant: PropTypes.object.isRequired,
 };
 export default CheckoutItem;

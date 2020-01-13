@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { PlantContext } from '../../../context/PlantContext';
+import { CartContext } from '../../../context/CartContext';
+
 import CartIcon from '../../../assets/svg/cart.svg';
 import Button from './Button';
 
@@ -29,7 +30,7 @@ const StyledCounter = styled.span`
 `;
 
 const CartButton = props => {
-  const { cartItemsCount } = useContext(PlantContext);
+  const { cartItemsCount } = useContext(CartContext);
   const { onClick } = props;
   return (
     <StyledWrapper>
