@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { PlantContext } from '../../context';
+import { PlantContext } from '../../context/PlantContext';
 import RangeInput from '../atoms/RangeInput/RangeInput';
 import SelectInput from '../atoms/SelectInput/SelectInput';
 import Search from '../atoms/Input/Search';

@@ -1,13 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import ProductPicutre from '../../assets/images/pawel-czerwinski-7EuUsw99KhE-unsplash.jpg';
 
 const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
   z-index: 10;
-  padding: 1rem 0.5rem 0 0;
+  padding: 1.5rem 0.5rem 0 0;
 `;
 
 const StyledProductImage = styled.figure`
@@ -35,22 +35,26 @@ const StyledTitle = styled.h3`
   font-weight: ${({ theme }) => theme.regular};
   margin: 0 0 1.5rem 0;
 `;
-const StyledQuentity = styled.p`
+const StyledQuantity = styled.p`
   color: ${({ theme }) => theme.fontColorHeading};
   font-size: 1rem;
   font-weight: ${({ theme }) => theme.light};
 `;
 
-const CartProduct = () => (
+const CartProduct = ({ plant: { src, title, price, quantity } }) => (
   <StyledWrapper>
     <StyledProductImage>
-      <img src={ProductPicutre} alt="product picure" />
+      <img src={src} alt="product picure" />
     </StyledProductImage>
     <StyledInfoWrapper>
-      <StyledTitle>Orhidea Tree</StyledTitle>
-      <StyledQuentity>5x$78</StyledQuentity>
+      <StyledTitle>{title}</StyledTitle>
+      <StyledQuantity>
+        {quantity} x ${price}
+      </StyledQuantity>
     </StyledInfoWrapper>
   </StyledWrapper>
 );
-
+CartProduct.propTypes = {
+  plant: PropTypes.array.isRequired,
+};
 export default CartProduct;

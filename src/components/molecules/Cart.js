@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from '../atoms/Button/Button';
 import CartProduct from './CartProduct';
+import { PlantContext } from '../../context/PlantContext';
 
 const StyledWrapper = styled.div`
+  z-index: 100;
   position: absolute;
   top: 5rem;
   right: 1rem;
@@ -12,7 +15,6 @@ const StyledWrapper = styled.div`
   height: 24rem;
   border: 2px solid ${({ theme }) => theme.fontColorHeading};
   background-color: #fff;
-  z-index: 9;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +28,7 @@ const StyledWrapper = styled.div`
 const StyledProductsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin: 0rem 0 1rem 0;
   padding: 1rem 0 0 0;
   overflow-y: scroll;
@@ -50,17 +52,24 @@ const StyledButton = styled(Button)`
   height: 3rem;
 `;
 
-const Cart = ({ isVisible }) => (
-  <StyledWrapper isVisible={isVisible}>
-    <StyledProductsWrapper>
-      <CartProduct />
-      <CartProduct />
-      <CartProduct />
-      <CartProduct />
-    </StyledProductsWrapper>
-    <StyledButton secondary>Checkout</StyledButton>
-  </StyledWrapper>
-);
+const Cart = ({ isVisible }) => {
+  const { cartItems } = useContext(PlantContext);
+
+  return (
+    <StyledWrapper isVisible={isVisible}>
+      <StyledProductsWrapper>
+        {cartItems.length ? (
+          cartItems.map(cartItem => <CartProduct plant={cartItem} key={cartItem.title} />)
+        ) : (
+          <span>cart is empty</span>
+        )}
+      </StyledProductsWrapper>
+      <Link to="/checkout">
+        <StyledButton secondary>Checkout</StyledButton>
+      </Link>
+    </StyledWrapper>
+  );
+};
 Cart.propTypes = {
   isVisible: PropTypes.bool.isRequired,
 };

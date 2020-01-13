@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { PlantContext } from '../../../context';
+import { PlantContext } from '../../../context/PlantContext';
 import Arrow from '../../../assets/svg/arrow.svg';
 
 const SelectWrapper = styled.div`

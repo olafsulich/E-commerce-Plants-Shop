@@ -9,7 +9,7 @@ import PlantHalfPage from '../components/molecules/PlantHalfPage';
 import Header from '../components/organisms/Header';
 import HeaderIcons from '../components/molecules/HeaderIcons';
 import FlowerPots from '../components/molecules/FlowerPots';
-import { PlantContext } from '../context';
+import { PlantContext } from '../context/PlantContext';
 
 const StyledWrapper = styled.div`
   height: 100vh;
@@ -110,8 +110,84 @@ const StyledLink = styled(Link)`
     error &&
     css`
       margin-bottom: 8rem;
-    `}
+    `} //
 `;
+
+// const SinglePlant = props => {
+//   const {
+//     match: {
+//       params: { slug },
+//     },
+//   } = props;
+//   const [pageWidth, setPageWidth] = useState(window.innerWidth);
+//   const [slugName, setSlug] = useState(slug);
+//   const context = useContext(PlantContext);
+//   const { getPlant } = context;
+//   console.log(getPlant);
+//   const plant = getPlant(slugName);
+//   const { title, price, info, type } = plant;
+
+//   const updateDimensions = () => {
+//     setPageWidth(window.innerWidth);
+//   };
+
+//   useEffect(() => {
+//     window.addEventListener('resize', updateDimensions);
+//     return () => {
+//       window.removeEventListener('resize', updateDimensions);
+//     };
+//   }, []);
+
+//   if (!plant) {
+//     return (
+//       <>
+//         <Header />
+//         <StyledWrapper error>
+//           <Heading main>No such plant could be found</Heading>
+//           <StyledLink error to="/">
+//             <Button secondary>Go back</Button>
+//           </StyledLink>
+//         </StyledWrapper>
+//       </>
+//     );
+//   }
+//   return (
+//     <StyledWrapper>
+//       {pageWidth >= 800 ? (
+//         <PlantHalfPage />
+//       ) : (
+//         <>
+//           <Header />
+//         </>
+//       )}
+//       <StyledDeteailsWrapper>
+//         {pageWidth >= 800 ? (
+//           <StyledIconsWrapper>
+//             <HeaderIcons />
+//           </StyledIconsWrapper>
+//         ) : null}
+
+//         <StyledTextWrapper>
+//           <StyledHeading main>{title}</StyledHeading>
+//           <StyledInfoWrapper>
+//             <Text main>
+//               type:
+//               <StyledTypeText>{type}</StyledTypeText>
+//             </Text>
+//             <Text main>{info}</Text>
+//             <FlowerPots />
+//             <StyledPaymentWrapper>
+//               <StyledTypeText price>${price}</StyledTypeText>
+//               {/* <StyledButton secondary onClick={() => addItem(plant)}>
+//                 Add to cart
+//               </StyledButton> */}
+//             </StyledPaymentWrapper>
+//           </StyledInfoWrapper>
+//         </StyledTextWrapper>
+//       </StyledDeteailsWrapper>
+//     </StyledWrapper>
+//   );
+// };
 
 class SinglePlant extends React.Component {
   static contextType = PlantContext;
@@ -145,7 +221,7 @@ class SinglePlant extends React.Component {
 
   render() {
     const { slug } = this.state;
-    const { getPlant } = this.context;
+    const { getPlant, handleAddItem } = this.context;
     const plant = getPlant(slug);
     if (!plant) {
       return (
@@ -189,7 +265,9 @@ class SinglePlant extends React.Component {
               <FlowerPots />
               <StyledPaymentWrapper>
                 <StyledTypeText price>${price}</StyledTypeText>
-                <StyledButton secondary>Add to cart</StyledButton>
+                <StyledButton secondary onClick={() => handleAddItem(plant)}>
+                  Add to cart
+                </StyledButton>
               </StyledPaymentWrapper>
             </StyledInfoWrapper>
           </StyledTextWrapper>

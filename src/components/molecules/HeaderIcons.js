@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../atoms/Button/Button';
+import CartButton from '../atoms/Button/CartButton';
 import Cart from './Cart';
-import CartIcon from '../../assets/svg/cart.svg';
 import LogoutIcon from '../../assets/svg/logout.svg';
 import { fire } from '../../firebase/Firebase';
 
@@ -18,12 +18,6 @@ const StyledLogoutButton = styled(Button)`
   height: 2.2rem;
 `;
 
-const StyledCartButton = styled(Button)`
-  background-image: url(${CartIcon});
-  z-index: 11;
-  cursor: pointer;
-`;
-
 const HeaderIcons = () => {
   const [CartOpen, setCartOpen] = useState(false);
 
@@ -31,7 +25,7 @@ const HeaderIcons = () => {
   const handlelogout = () => fire.auth().signOut();
   return (
     <StyledWrapper>
-      <StyledCartButton cart onClick={handleCartOpen} />
+      <CartButton onClick={handleCartOpen} />
       <Cart isVisible={CartOpen} />
       <StyledLogoutButton onClick={handlelogout} />
     </StyledWrapper>

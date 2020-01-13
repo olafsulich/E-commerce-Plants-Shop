@@ -123,7 +123,7 @@ const Login = () => {
       .auth()
       .signInWithEmailAndPassword(email, password)
       /* eslint-disable */
-      .catch(error => alert(error.message));
+      .catch(error => alert(`Your email or password is incorrect, please check your data`));
   };
 
   const handleSignup = () => {
@@ -135,7 +135,6 @@ const Login = () => {
       {pageWidth >= 800 ? <PlantHalfPage /> : null}
 
       <StyledFormWrapper>
-        {/* <Text>email:TestUser@gmail.com password:TestUser1</Text> */}
         <StyledForm signin onSubmit={handleSubmit(newAccount ? handleSignup : handleSignin)}>
           <StyledHeadingWrapper>
             <StyledHeading>{newAccount ? 'Sign up' : 'Sign in'}</StyledHeading>

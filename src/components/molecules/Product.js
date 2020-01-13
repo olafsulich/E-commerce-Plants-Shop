@@ -37,16 +37,19 @@ const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const Product = ({ title, src, slug }) => (
-  <StyledLink to={`/${slug}`}>
-    <StyledTitleWrapper key={title}>
-      <StyledTitle>{title}</StyledTitle>
-      <StyledImageWrapper>
-        <StyledImage src={src} alt={`${title} plant`} />
-      </StyledImageWrapper>
-    </StyledTitleWrapper>
-  </StyledLink>
-);
+const Product = ({ title, src, slug }) => {
+  return (
+    <StyledLink to={`/plants/${slug}`}>
+      <StyledTitleWrapper key={title}>
+        <StyledTitle>{title}</StyledTitle>
+        <StyledImageWrapper>
+          <StyledImage src={src} alt={`${title} plant`} />
+        </StyledImageWrapper>
+      </StyledTitleWrapper>
+    </StyledLink>
+  );
+};
+
 Product.propTypes = {
   title: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,

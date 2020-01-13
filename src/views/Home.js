@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withPlantConsumer } from '../context';
+import { withPlantConsumer } from '../context/PlantContext';
 import Products from '../components/organisms/Products';
 import Hero from '../components/organisms/Hero';
 import Preferences from '../components/molecules/Preferences';

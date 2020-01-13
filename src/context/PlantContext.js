@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import productsData from './data';
+import productsData from '../data';
+import {
+  addItemToCart,
+  removeItemFromCart,
+  filterItemFromCart,
+  getCartItemsCount,
+  getCartTotal,
+} from '../utils/CartUtils';
 
 const PlantContext = React.createContext();
 
@@ -8,6 +15,9 @@ class PlantProvider extends React.Component {
   state = {
     plants: [],
     filtredPlants: [],
+    cartItems: [],
+    cartItemsCount: 0,
+    cartTotal: 10,
     type: '',
     searchName: '',
     price: 0,
@@ -16,6 +26,7 @@ class PlantProvider extends React.Component {
   };
 
   componentDidMount() {
+    const { cartItems } = this.state;
     const plants = this.dataList(productsData);
     const maxPrice = Math.max(...plants.map(plant => plant.price));
     this.setState({
@@ -23,8 +34,31 @@ class PlantProvider extends React.Component {
       filtredPlants: plants,
       price: maxPrice,
       maxPrice,
+      cartItemsCount: getCartItemsCount(cartItems),
+      cartTotal: getCartTotal(cartItems),
     });
   }
+
+  addItem = item => {
+    const { cartItemsCount, cartItems } = this.state;
+    this.setState({
+      cartItems: addItemToCart(cartItems, item),
+      cartItemsCount: cartItemsCount + 1,
+    });
+  };
+
+  removeItem = item => {
+    const { cartItemsCount, cartItems } = this.state;
+    this.setState({
+      cartItems: removeItemFromCart(cartItems, item),
+      cartItemsCount: cartItemsCount - 1,
+    });
+  };
+
+  clearItemFromCart = item => {
+    const { cartItems } = this.state;
+    this.setState({ cartItems: filterItemFromCart(cartItems, item) });
+  };
 
   getPlant = slug => {
     const { plants } = this.state;
@@ -126,6 +160,11 @@ class PlantProvider extends React.Component {
           handleChange: this.handleChangeType,
           handleChangeSearch: this.handleChangeSearch,
           handleChangeRange: this.handleChangeRange,
+          handleAddItem: this.addItem,
+          handleRemoveItem: this.removeItem,
+          handleClearItemFromCart: this.clearItemFromCart,
+          handleCartItemsCount: this.getCartItemsCount,
+          handleCartTotal: this.getCartTotal,
         }}
       >
         {children}
