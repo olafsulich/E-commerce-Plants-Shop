@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
+import { CartContext } from '../../context/CartContext';
 import Text from '../atoms/Text/Text';
 import greyPot from '../../assets/svg/greyPot.svg';
 import bluePot from '../../assets/svg/bluePot.svg';
@@ -40,24 +41,52 @@ const StyledText = styled(Text)`
   font-size: 2.4rem;
 `;
 
-const FlowerPots = () => (
-  <>
-    <StyledText main>Choose flowerpot</StyledText>
-    <StyledWrapper>
-      <StyledPot active>
-        <img src={greyPot} alt="grey pot" />
-      </StyledPot>
-      <StyledPot>
-        <img src={redPot} alt="red pot" />
-      </StyledPot>
-      <StyledPot>
-        <img src={yellowPot} alt="yellow pot" />
-      </StyledPot>
-      <StyledPot>
-        <img src={bluePot} alt="blue pot" />
-      </StyledPot>
-    </StyledWrapper>
-  </>
-);
+const FlowerPots = () => {
+  const { changeColor } = useContext(CartContext);
+
+  return (
+    <>
+      <StyledText main>Choose flowerpot</StyledText>
+      <StyledWrapper>
+        <StyledPot onClick={changeColor}>
+          <img
+            src={greyPot}
+            alt="grey pot"
+            data-hex1="#485550"
+            data-hex2="#4F7262"
+            data-hex3="#4B6358"
+          />
+        </StyledPot>
+        <StyledPot onClick={changeColor}>
+          <img
+            src={redPot}
+            alt="red pot"
+            data-hex1="#9E3901"
+            data-hex2="#CB4F09"
+            data-hex3="#BC4502"
+          />
+        </StyledPot>
+        <StyledPot onClick={changeColor}>
+          <img
+            src={yellowPot}
+            alt="yellow pot"
+            data-hex1="#8D9901"
+            data-hex2="#CCDE00"
+            data-hex3="#B5C500"
+          />
+        </StyledPot>
+        <StyledPot onClick={changeColor}>
+          <img
+            src={bluePot}
+            alt="blue pot"
+            data-hex1="#006D85"
+            data-hex2="#0092B3"
+            data-hex3="#00809C"
+          />
+        </StyledPot>
+      </StyledWrapper>
+    </>
+  );
+};
 
 export default FlowerPots;

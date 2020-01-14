@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
+import { CartContext } from '../../context/CartContext';
 import Heroplant from '../atoms/Plant/Plant';
 import StyledHeading from '../atoms/Heading/Heading';
 
@@ -37,13 +38,21 @@ const StyledWrapperHeading = styled.article`
   }
 `;
 
-const Hero = () => (
-  <StyledWrapper>
-    <StyledWrapperHeading>
-      <StyledHeading main>Say hello to </StyledHeading>
-      <StyledHeading main>home plants!</StyledHeading>
-    </StyledWrapperHeading>
-    <Heroplant />
-  </StyledWrapper>
-);
+const Hero = () => {
+  const { clearColor } = useContext(CartContext);
+
+  useEffect(() => {
+    clearColor();
+  });
+
+  return (
+    <StyledWrapper>
+      <StyledWrapperHeading>
+        <StyledHeading main>Say hello to </StyledHeading>
+        <StyledHeading main>home plants!</StyledHeading>
+      </StyledWrapperHeading>
+      <Heroplant />
+    </StyledWrapper>
+  );
+};
 export default Hero;

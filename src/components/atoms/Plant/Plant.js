@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import Plant from '../../../assets/svg/plant.svg';
+import { CartContext } from '../../../context/CartContext';
+import Plant from '../PlantIcon/PlantIcon';
+import PlantDefault from '../../../assets/svg/plant.svg';
 import Morphing from '../../../assets/svg/morphing.svg';
 
 const StyledPlantWrapper = styled.figure`
@@ -19,24 +21,38 @@ const StyledMorphing = styled.img`
   width: 90%;
   height: 90%;
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, 0%);
 `;
 
-const StyledPlant = styled.img`
+const StyledPlant = styled.div`
   width: 90%;
   height: 90%;
   position: absolute;
   top: 30%;
-  left: 50%;
+  left: 70%;
+  transform: translate(-45%, -40%);
+`;
+const StyledPlantDefault = styled.div`
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  top: 35%;
+  left: 40%;
   transform: translate(-45%, -40%);
 `;
 
-const Heroplant = () => (
-  <StyledPlantWrapper product>
-    <StyledMorphing src={Morphing} />
-    <StyledPlant src={Plant} />
-  </StyledPlantWrapper>
-);
+const Heroplant = () => {
+  return (
+    <StyledPlantWrapper product>
+      <StyledMorphing src={Morphing} />
+      <StyledPlant>
+        <StyledPlantDefault>
+          <Plant />
+        </StyledPlantDefault>
+      </StyledPlant>
+    </StyledPlantWrapper>
+  );
+};
 export default Heroplant;

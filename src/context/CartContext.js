@@ -27,6 +27,11 @@ export const CartContext = createContext({
   maxPrice: 0,
   type: '',
   searchName: '',
+  hex1: '#B5B5B5',
+  hex2: '#485550',
+  hex3: '#4B6358',
+  changeColor: () => {},
+  clearColor: () => {},
 });
 
 const CartProvider = ({ children }) => {
@@ -39,7 +44,25 @@ const CartProvider = ({ children }) => {
   const [filtredPlants, setFiltredPlants] = useState([]);
   const [price, setPrice] = useState(0);
   const [type, setType] = useState('');
-  const [searchName, setSearchNem] = useState('');
+  const [searchName, setSearchName] = useState('');
+  const [hex1, setHex1] = useState('#B5B5B5');
+  const [hex2, setHex2] = useState('#485550');
+  const [hex3, setHex3] = useState('#4B6358');
+
+  const changeColor = e => {
+    const color1 = e.target.getAttribute('data-hex1');
+    const color2 = e.target.getAttribute('data-hex2');
+    const color3 = e.target.getAttribute('data-hex3');
+    setHex1(color1);
+    setHex2(color2);
+    setHex3(color3);
+  };
+  const clearColor = () => {
+    setHex1('#B5B5B5');
+    setHex2('#485550');
+    setHex3('#4B6358');
+  };
+
   // const initialState = {
   //   type: '',
   //   searchName: '',
@@ -117,6 +140,11 @@ const CartProvider = ({ children }) => {
         searchName,
         // handleChange,
         filterPlants,
+        hex1,
+        hex2,
+        hex3,
+        changeColor,
+        clearColor,
       }}
     >
       {children}
