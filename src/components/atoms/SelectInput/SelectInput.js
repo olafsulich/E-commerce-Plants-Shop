@@ -63,9 +63,10 @@ const SelectInput = props => {
   const getUnique = (items, value) => {
     return [...new Set(items.map(item => item[value]))];
   };
-  let types = getUnique(plants, 'type');
+  let types = getUnique(plants, 'plantType');
   types = ['all', ...types];
   const { name, onChange, value } = props;
+
   types = types.map(item => {
     return (
       <StyledOption value={item} key={item}>

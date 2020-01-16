@@ -3,7 +3,6 @@ import { CartContext } from '../../../context/CartContext';
 
 const PlantIcon = () => {
   const { hex1, hex2, hex3 } = useContext(CartContext);
-  console.log(hex1, hex2, hex3);
   return (
     <svg
       width="248"

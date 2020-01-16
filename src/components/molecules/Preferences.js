@@ -39,12 +39,15 @@ const Preferences = () => {
     handleChange,
     // handleChangeSearch,
     // handleChangeRange,
+    complexStateInitial,
     type,
     price,
     minPrice,
     maxPrice,
     searchName,
+    handleChangeSearch,
   } = context;
+  // console.log(complexStateInitial);
   return (
     <StyledFormWrapper>
       <StyledWrapper>
@@ -53,7 +56,7 @@ const Preferences = () => {
           name="searchName"
           value={searchName}
           placeholder="search plants"
-          onChange={handleChange}
+          onChange={handleChangeSearch}
         ></Search>
         <SelectInput name="type" value={type} onChange={handleChange} />
         <RangeInput

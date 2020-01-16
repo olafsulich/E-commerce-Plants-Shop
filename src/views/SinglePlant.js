@@ -236,7 +236,7 @@ class SinglePlant extends React.Component {
         </>
       );
     }
-    const { title, price, info, type } = plant;
+    const { plantTitle, plantPrice, plantDescription, planttType } = plant;
     const { pageWidth } = this.state;
     return (
       <StyledWrapper>
@@ -255,16 +255,16 @@ class SinglePlant extends React.Component {
           ) : null}
 
           <StyledTextWrapper>
-            <StyledHeading main>{title}</StyledHeading>
+            <StyledHeading main>{plantTitle}</StyledHeading>
             <StyledInfoWrapper>
               <Text main>
                 type:
-                <StyledTypeText>{type}</StyledTypeText>
+                <StyledTypeText>{planttType}</StyledTypeText>
               </Text>
-              <Text main>{info}</Text>
+              <Text main>{plantDescription}</Text>
               <FlowerPots />
               <StyledPaymentWrapper>
-                <StyledTypeText price>${price}</StyledTypeText>
+                <StyledTypeText price>${plantPrice}</StyledTypeText>
                 <StyledButton secondary onClick={() => addItem(plant)}>
                   Add to cart
                 </StyledButton>

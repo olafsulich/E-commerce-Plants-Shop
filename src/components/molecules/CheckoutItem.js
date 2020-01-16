@@ -78,15 +78,15 @@ const StyledPrice = styled.span`
 `;
 
 const CheckoutItem = ({ plant }) => {
-  const { title, src, price, quantity } = plant;
+  const { plantTitle, plantImage, plantPrice, quantity } = plant;
   const { addItem, removeItem, clearItemFromCart } = useContext(CartContext);
 
   return (
     <StyledWrapper>
       <StyledProductImage>
-        <img src={src} alt="pic" />
+        <img src={plantImage.title} alt="pic" />
       </StyledProductImage>
-      <StyledTitle>{title}</StyledTitle>
+      <StyledTitle>{plantTitle}</StyledTitle>
       <StyledQuantityWrapper>
         <Button quantity onClick={() => removeItem(plant)}>
           &#10094;
@@ -96,7 +96,7 @@ const CheckoutItem = ({ plant }) => {
           &#10095;
         </Button>
       </StyledQuantityWrapper>
-      <StyledPrice>${price}</StyledPrice>
+      <StyledPrice>${plantPrice}</StyledPrice>
       <Button remove onClick={() => clearItemFromCart(plant)} />
     </StyledWrapper>
   );

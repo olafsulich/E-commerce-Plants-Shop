@@ -71,7 +71,7 @@ class PlantProvider extends React.Component {
     const value = e.target.value;
     this.setState(
       {
-        [name]: value,
+        type: value,
       },
       this.handleFilteringPlantsByType,
     );
@@ -79,11 +79,10 @@ class PlantProvider extends React.Component {
 
   handleChangeSearch = e => {
     e.preventDefault();
-    const name = e.target.name;
     const value = e.target.value;
     this.setState(
       {
-        [name]: value,
+        searchName: value,
       },
       this.handleFilteringPlantsByName,
     );
@@ -91,11 +90,10 @@ class PlantProvider extends React.Component {
 
   handleChangeRange = e => {
     e.preventDefault();
-    const name = e.target.name;
     const value = e.target.value;
     this.setState(
       {
-        [name]: value,
+        price: value,
       },
       this.handleFilteringPlantsByPrice,
     );

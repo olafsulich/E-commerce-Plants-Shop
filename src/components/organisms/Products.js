@@ -44,7 +44,12 @@ const Products = ({ plants }) => {
   return (
     <StyledWrapper>
       {plants.map(plant => (
-        <Product key={plant.id} title={plant.title} src={plant.src} slug={plant.slug} />
+        <Product
+          key={plant.plantId}
+          title={plant.plantTitle}
+          src={plant.plantImage.title}
+          slug={plant.plantSlug}
+        />
       ))}
     </StyledWrapper>
   );

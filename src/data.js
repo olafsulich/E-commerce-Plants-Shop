@@ -10,93 +10,93 @@ import plant9 from './assets/images/scott-webb-oRWRlTgBrPo-unsplash (1).jpg';
 
 const productsData = [
   {
-    slug: 'Avens',
-    id: 1,
-    price: 3,
-    type: 'home',
-    title: 'Avens',
-    src: plant1,
-    info:
+    plantSlug: 'Avens',
+    plantId: 1,
+    plantPrice: 3,
+    plantType: 'home',
+    plantTitle: 'Avens',
+    plantImage: plant1,
+    plantDescription:
       'Avens is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Utah',
   },
   {
-    slug: 'Bittersweet',
-    id: 2,
-    price: 5,
-    type: 'home',
-    title: 'Bittersweet',
-    src: plant2,
-    info:
+    plantSlug: 'Bittersweet',
+    plantId: 2,
+    plantPrice: 5,
+    plantType: 'home',
+    plantTitle: 'Bittersweet',
+    plantImage: plant2,
+    plantDescription:
       'Bittersweet is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Utah',
   },
   {
-    slug: 'Bugle',
-    id: 3,
-    price: 2,
-    type: 'home',
-    title: 'Bugle',
-    src: plant3,
-    info:
+    plantSlug: 'Bugle',
+    plantId: 3,
+    plantPrice: 2,
+    plantType: 'home',
+    plantTitle: 'Bugle',
+    plantImage: plant3,
+    plantDescription:
       'Bugle is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Utah',
   },
   {
-    slug: 'Cornel',
-    id: 4,
-    price: 7,
-    type: 'outdoor',
-    title: 'Cornel',
-    src: plant4,
-    info:
+    plantSlug: 'Cornel',
+    plantId: 4,
+    plantPrice: 7,
+    plantType: 'outdoor',
+    plantTitle: 'Cornel',
+    plantImage: plant4,
+    plantDescription:
       'Cornel is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Utah',
   },
   {
-    slug: 'Eytelia',
-    id: 5,
-    price: 11,
-    type: 'outdoor',
-    title: 'Eytelia',
-    src: plant5,
-    info:
+    plantSlug: 'Eytelia',
+    plantId: 5,
+    plantPrice: 11,
+    plantType: 'outdoor',
+    plantTitle: 'Eytelia',
+    plantImage: plant5,
+    plantDescription:
       'Eytelia is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Utah',
   },
   {
-    slug: 'Feverfew',
-    id: 6,
-    price: 3,
-    type: 'home',
-    title: 'Feverfew',
-    src: plant6,
-    info:
+    plantSlug: 'Feverfew',
+    plantId: 6,
+    plantPrice: 3,
+    plantType: 'home',
+    plantTitle: 'Feverfew',
+    plantImage: plant6,
+    plantDescription:
       'Feverfew is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Utah',
   },
   {
-    slug: 'Gordaldo',
-    id: 7,
-    price: 4,
-    type: 'outdoor',
-    title: 'Gordaldo',
-    src: plant7,
-    info:
-      'Gordaldo is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Utah',
+    plantSlug: 'Gordaldo',
+    plantId: 7,
+    plantPrice: 4,
+    plantType: 'outdoor',
+    plantTitle: 'Gordaldo',
+    plantImage: plant7,
+    plantDescription:
+      'hGordaldo is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Uta',
   },
   {
-    slug: 'Honesty',
-    id: 8,
-    price: 6,
-    type: 'outdoor',
-    title: 'Honesty',
-    src: plant8,
-    info:
+    plantSlug: 'Honesty',
+    plantId: 8,
+    plantPrice: 6,
+    plantType: 'outdoor',
+    plantTitle: 'Honesty',
+    plantImage: plant8,
+    plantDescription:
       'Honesty is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Utah',
   },
   {
-    slug: 'Mesquite',
-    id: 9,
-    price: 7,
-    type: 'home',
-    title: 'Mesquite',
-    src: plant9,
-    info:
+    plantSlug: 'Mesquite',
+    plantId: 9,
+    plantPrice: 7,
+    plantType: 'home',
+    plantTitle: 'Mesquite',
+    plantImage: plant9,
+    plantDescription:
       'Mesquite is a North American genus in the daisy family. It is native to desert regions of the southwestern United States, in southern California, southern Nevada, Arizona, and southeastern Utah',
   },
 ];

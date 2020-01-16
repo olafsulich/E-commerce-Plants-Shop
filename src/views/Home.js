@@ -7,7 +7,8 @@ import Header from '../components/organisms/Header';
 
 const Home = () => {
   // const { plants, filtredPlants } = context;
-  const { plants } = useContext(CartContext);
+  const { plants, filtredPlants } = useContext(CartContext);
+
   // const { plants, filtredPlants } = useContext(CartContext);
 
   return (
@@ -16,7 +17,7 @@ const Home = () => {
       <main>
         <Hero />
         <Preferences plants={plants} />
-        <Products plants={plants} />
+        <Products plants={filtredPlants} />
       </main>
     </>
   );

@@ -41,15 +41,15 @@ const StyledQuantity = styled.p`
   font-weight: ${({ theme }) => theme.light};
 `;
 
-const CartProduct = ({ plant: { src, title, price, quantity } }) => (
+const CartProduct = ({ plant: { plantImage, plantTitle, plantPrice, quantity } }) => (
   <StyledWrapper>
     <StyledProductImage>
-      <img src={src} alt="product picure" />
+      <img src={plantImage.title} alt="product picure" />
     </StyledProductImage>
     <StyledInfoWrapper>
-      <StyledTitle>{title}</StyledTitle>
+      <StyledTitle>{plantTitle}</StyledTitle>
       <StyledQuantity>
-        {quantity} x ${price}
+        {quantity} x ${plantPrice}
       </StyledQuantity>
     </StyledInfoWrapper>
   </StyledWrapper>
