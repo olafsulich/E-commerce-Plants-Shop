@@ -25,7 +25,7 @@
     ],
     "no-unused-vars": 0,
     "prefer-destructuring": 0,
-    "jsx-a11y/rule-name": "alt-text"
+    "jsx-a11y/rule-name": "aria-role"
   },
   "settings": {
     "import/resolver": {
