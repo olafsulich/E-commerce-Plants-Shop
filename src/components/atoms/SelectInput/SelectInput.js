@@ -41,6 +41,9 @@ const StyledSelect = styled.select`
   color: ${({ theme }) => theme.fontColorText};
   font-weight: ${({ theme }) => theme.regular};
   font-size: 1.3rem;
+  &:focus {
+    outline-color: ${({ theme }) => theme.fontColorPrimary};
+  }
 `;
 
 const StyledOption = styled.option`
@@ -49,8 +52,8 @@ const StyledOption = styled.option`
   text-transform: capitalize;
 
   &:hover,
-  &:focus,
   &:active,
+  &:focus,
   &:checked {
     background: ${({ theme }) => theme.fontColorPrimary};
     color: #fff;

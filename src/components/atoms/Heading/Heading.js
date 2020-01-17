@@ -27,10 +27,10 @@ const StyledHeading = styled.h2`
         content: '';
         position: absolute;
         width: 100%;
-        height: 50%;
+        height: 40%;
         background-color: ${({ theme }) => theme.primaryColor};
         z-index: -1;
-        top: 50%;
+        top: 55%;
         left: 10%;
       }
     `};

@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import StripeCheckout from 'react-stripe-checkout';
-import axios from 'axios';
+// import axios from 'axios';
 const StripeButton = ({ price }) => {
   const priceStripe = price * 100;
   const key = 'pk_test_5R7ANtmXdmeaY7ahK6WWSEvr00lBQBoamY';
@@ -23,7 +24,6 @@ const StripeButton = ({ price }) => {
   //       );
   //     });
   // };
-  const onToken = token => console.log(token);
   return (
     <StripeCheckout
       label="Pay now"
@@ -34,10 +34,12 @@ const StripeButton = ({ price }) => {
       description={`Your total is ${price}`}
       amount={priceStripe}
       panelLabel="Pay now"
-      token={onToken}
       stripeKey={key}
     />
   );
+};
+StripeButton.propTypes = {
+  price: PropTypes.number.isRequired,
 };
 
 export default StripeButton;

@@ -83,6 +83,9 @@ const StyledPaymentWrapper = styled.div`
   display: flex;
   align-items: flex;
   justify-content: flex-end;
+  @media only screen and (min-width: 1000px) {
+    margin: 1rem 0 0 0;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -198,18 +201,6 @@ class SinglePlant extends React.Component {
       slug,
     };
   }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.updateDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateDimensions);
-  }
-
-  updateDimensions = () => {
-    this.setState({ pageWidth: window.innerWidth });
-  };
 
   render() {
     const { slug } = this.state;

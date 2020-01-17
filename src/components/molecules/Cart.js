@@ -21,8 +21,7 @@ const StyledWrapper = styled.div`
   justify-content: space-between;
   will-change: opacity, transform;
   opacity: ${({ isVisible }) => (isVisible ? '1' : '0')};
-  transform: translateX(${({ isVisible }) => (isVisible ? '0' : '100%')});
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 `;
 
 const StyledProductsWrapper = styled.div`
@@ -58,7 +57,7 @@ const Cart = ({ isVisible }) => {
   const { cartItems } = useContext(CartContext);
 
   return (
-    <StyledWrapper isVisible={isVisible}>
+    <StyledWrapper isVisible={isVisible} tabIndex="0">
       <StyledProductsWrapper>
         {cartItems.length ? (
           cartItems.map(cartItem => <CartProduct plant={cartItem} key={cartItem.plantTitle} />)

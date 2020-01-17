@@ -19,6 +19,7 @@ const StyledWrapper = styled.div`
 
 const StyledFormWrapper = styled.div`
   margin-top: 6rem;
+  margin-bottom: 8rem;
   width: 50%;
   height: 100%;
   display: flex;
@@ -27,6 +28,7 @@ const StyledFormWrapper = styled.div`
   flex-direction: column;
   @media only screen and (min-width: 1000px) {
     margin-top: 12rem;
+    margin-bottom: 0rem;
   }
 `;
 
@@ -37,16 +39,33 @@ const StyledForm = styled.form`
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  text-align: left;
 `;
 
 const StyledInput = styled(Input)`
   position: relative;
   padding: 1.2rem 0.5rem;
-  margin: 1rem 0;
+  /* margin: 0.5rem 0 1rem 0; */
+  :last-of-type {
+    margin: 1.5rem 0 1rem 0;
+  }
+
   ::placeholder {
-    letter-spacing: 1px;
-    color: ${({ theme }) => theme.fontColorText};
-    font-size: 1rem;
+    color: transparent;
+  }
+
+  :not(:placeholder-shown) + label,
+  :focus + label {
+    transform: translate(0, -50%);
+    cursor: pointer;
+  }
+
+  :focus + ::placeholder {
+    color: inherit;
+  }
+
+  :focus {
+    outline: 0;
   }
 `;
 
@@ -93,6 +112,29 @@ const StyledAuthor = styled.a`
   color: inherit;
 `;
 
+const StyledInputLabelWrapper = styled.div`
+  display: flex;
+  flex-flow: column-reverse;
+  position: relative;
+
+  input + label {
+    line-height: 1;
+    height: 4rem;
+    transition: transform 0.25s, opacity 0.25s ease-in-out;
+    transform-origin: 0 0;
+    transform: translate(10px, 20%);
+    position: absolute;
+  }
+`;
+
+const StyledLabel = styled.label`
+  letter-spacing: 1px;
+  color: ${({ theme }) => theme.fontColorText};
+  font-size: 1rem;
+  position: absolute;
+  user-select: none;
+`;
+
 const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const [email, setEmail] = useState('');
@@ -133,7 +175,10 @@ const Login = () => {
   };
 
   const handleSignup = () => {
-    fire.auth().createUserWithEmailAndPassword(email, password);
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch(error => alert(`Email is already in use, sign in or use other email`));
   };
 
   return (
@@ -144,15 +189,22 @@ const Login = () => {
           <StyledHeadingWrapper>
             <StyledHeading>{newAccount ? 'Sign up' : 'Sign in'}</StyledHeading>
           </StyledHeadingWrapper>
-          <StyledInput
-            name="email"
-            placeholder="Email"
-            onChange={handleEmailChange}
-            ref={register({
-              required: true,
-              pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-            })}
-          />
+          <StyledInputLabelWrapper>
+            <StyledInput
+              id="email"
+              name="email"
+              placeholder="Email"
+              onChange={handleEmailChange}
+              aria-label="email"
+              aria-required="true"
+              ref={register({
+                required: true,
+                pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+              })}
+            />
+            <StyledLabel htmlFor="email">Email</StyledLabel>
+          </StyledInputLabelWrapper>
+
           {errors.email && errors.email.type === 'required' && (
             <Text errorMessage>Email is required</Text>
           )}
@@ -160,16 +212,22 @@ const Login = () => {
             <Text errorMessage>Email is invalid please add @</Text>
           )}
 
-          <StyledInput
-            name="password"
-            placeholder="Password"
-            type="password"
-            onChange={handlePasswordChange}
-            ref={register({
-              required: true,
-              pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
-            })}
-          />
+          <StyledInputLabelWrapper>
+            <StyledInput
+              name="password"
+              placeholder="myPassword1"
+              type="password"
+              onChange={handlePasswordChange}
+              aria-label="password"
+              aria-required="true"
+              ref={register({
+                required: true,
+                pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/,
+              })}
+            />
+            <StyledLabel forHtml="password">Password</StyledLabel>
+          </StyledInputLabelWrapper>
+
           {errors.password && errors.password.type === 'required' && (
             <Text errorMessage>Password is required</Text>
           )}

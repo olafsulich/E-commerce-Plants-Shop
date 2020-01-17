@@ -24,64 +24,82 @@ const StyledPot = styled.figure`
   cursor: pointer;
   width: 7rem;
   height: 7rem;
-  padding: 0.8rem;
-  border: dashed 4px #f3f6f8;
+
   ${({ active }) =>
     active &&
     css`
       border: solid 4px #f3f6f8;
     `}
-  img {
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 const StyledText = styled(Text)`
   font-size: 2.4rem;
 `;
 
+const StyledImage = styled.img`
+  width: 100%;
+  height: 100%;
+  padding: 0.8rem;
+  outline: dashed 4px #f3f6f8;
+  :focus {
+    outline: solid 4px #f3f6f8;
+  }
+`;
+
 const FlowerPots = () => {
   const { changeColor } = useContext(CartContext);
+  const handleOnKeyPress = e => {
+    if (e.keyCode === 0) {
+      changeColor(e);
+    }
+  };
 
   return (
     <>
       <StyledText main>Flowerpot preview</StyledText>
       <StyledWrapper>
         <StyledPot onClick={changeColor}>
-          <img
+          <StyledImage
             src={greyPot}
             alt="grey pot"
             data-hex1="#485550"
             data-hex2="#4F7262"
             data-hex3="#4B6358"
+            tabIndex="0"
+            onKeyPress={handleOnKeyPress}
           />
         </StyledPot>
         <StyledPot onClick={changeColor}>
-          <img
+          <StyledImage
             src={redPot}
             alt="red pot"
             data-hex1="#9E3901"
             data-hex2="#CB4F09"
             data-hex3="#BC4502"
+            onKeyPress={handleOnKeyPress}
+            tabIndex="0"
           />
         </StyledPot>
         <StyledPot onClick={changeColor}>
-          <img
+          <StyledImage
             src={yellowPot}
             alt="yellow pot"
             data-hex1="#8D9901"
             data-hex2="#CCDE00"
             data-hex3="#B5C500"
+            onKeyPress={handleOnKeyPress}
+            tabIndex="0"
           />
         </StyledPot>
         <StyledPot onClick={changeColor}>
-          <img
+          <StyledImage
             src={bluePot}
             alt="blue pot"
             data-hex1="#006D85"
             data-hex2="#0092B3"
             data-hex3="#00809C"
+            onKeyPress={handleOnKeyPress}
+            tabIndex="0"
           />
         </StyledPot>
       </StyledWrapper>

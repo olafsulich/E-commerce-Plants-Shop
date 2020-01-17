@@ -7,7 +7,7 @@ const StyledWrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   z-index: 10;
-  padding: 1.5rem 0.5rem 0 0;
+  padding: 2.5rem 0.5rem 0 0;
 `;
 
 const StyledProductImage = styled.figure`

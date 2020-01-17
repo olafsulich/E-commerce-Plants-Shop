@@ -17,6 +17,9 @@ const StyledInput = styled.input`
   background-size: 15px;
   background-position: 92% 50%;
   background-repeat: no-repeat;
+  &:focus {
+    outline-color: ${({ theme }) => theme.fontColorPrimary};
+  }
   @media only screen and (min-width: 500px) {
     width: 28rem;
   }

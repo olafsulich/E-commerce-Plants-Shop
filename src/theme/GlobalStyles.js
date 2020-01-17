@@ -9,9 +9,7 @@ const GlobalStyle = createGlobalStyle`
     margin:0;
     padding:0;
   }
-  *:focus {
-    outline:none;
-}
+
   button{
     background:none;
   }
@@ -67,6 +65,9 @@ const GlobalStyle = createGlobalStyle`
   input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
+    *:focus {
+    outline-color:transparent;
+   } 
 `;
 
 export default GlobalStyle;

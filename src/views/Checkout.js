@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import { CartContext } from '../context/CartContext';
 import PlantHalfPage from '../components/molecules/PlantHalfPage';
 import CheckoutItem from '../components/molecules/CheckoutItem';
-import Button from '../components/atoms/Button/Button';
 import Header from '../components/organisms/Header';
 import StripeButton from '../components/atoms/Button/StripeButton';
+
 const StyledWrapper = styled.div`
   height: 100vh;
   display: flex;
