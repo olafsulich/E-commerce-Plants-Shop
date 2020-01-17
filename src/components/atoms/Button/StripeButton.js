@@ -24,6 +24,7 @@ const StripeButton = ({ price }) => {
   //       );
   //     });
   // };
+  const onToken = token => console.log(token);
   return (
     <StripeCheckout
       label="Pay now"
@@ -34,6 +35,7 @@ const StripeButton = ({ price }) => {
       description={`Your total is ${price}`}
       amount={priceStripe}
       panelLabel="Pay now"
+      token={onToken}
       stripeKey={key}
     />
   );
