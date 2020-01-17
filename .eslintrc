@@ -25,7 +25,7 @@
     ],
     "no-unused-vars": 0,
     "prefer-destructuring": 0,
-    "jsx-a11y/rule-name": "aria-role"
+    "jsx-a11y/rule-name": 1
   },
   "settings": {
     "import/resolver": {
