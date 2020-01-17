@@ -126,10 +126,12 @@ const Label = styled.label`
 `;
 
 const RangeInput = props => {
-  const { onChange, minPrice, maxPrice, price, value, name } = props;
+  const { onChange, minPrice, maxPrice, value, name } = props;
   return (
     <InputWrapper>
-      <Label htmlFor="range">Price range ${price}</Label>
+      <Label htmlFor="range">
+        Price range ${minPrice} - ${maxPrice}
+      </Label>
       <Input
         name={name}
         type="range"

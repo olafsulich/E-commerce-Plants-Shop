@@ -7,28 +7,31 @@ import Text from '../components/atoms/Text/Text';
 import Button from '../components/atoms/Button/Button';
 import PlantHalfPage from '../components/molecules/PlantHalfPage';
 import Header from '../components/organisms/Header';
-import HeaderIcons from '../components/molecules/HeaderIcons';
 import FlowerPots from '../components/molecules/FlowerPots';
 import { CartContext } from '../context/CartContext';
 
 const StyledWrapper = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
 
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 1000px) {
     flex-direction: row;
     overflow: hidden;
+    height: 100vh;
   }
 
-  ${({ error }) =>
-    error &&
+  ${({ notfound }) =>
+    notfound &&
     css`
       height: 50vh;
       flex-direction: column;
       justify-content: space-around;
+      @media only screen and (min-width: 1000px) {
+        flex-direction: column;
+      }
     `}
 `;
 const StyledDeteailsWrapper = styled.div`
@@ -39,16 +42,12 @@ const StyledDeteailsWrapper = styled.div`
   justify-content: space-around;
   flex-direction: column;
   padding: 6rem 4rem 0rem 2rem;
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 1000px) {
     width: 50%;
     padding: 4rem 4rem 10rem 4rem;
   }
 `;
 
-const StyledIconsWrapper = styled.div`
-  margin: 1rem 0 3rem 1rem;
-  width: 100%;
-`;
 const StyledTextWrapper = styled.section`
   width: 100%;
   display: flex;
@@ -56,7 +55,7 @@ const StyledTextWrapper = styled.section`
   justify-content: center;
   flex-direction: column;
   margin: 3rem 0 0 0;
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 1000px) {
     margin: 2rem 0 0 2rem;
   }
 `;
@@ -79,7 +78,7 @@ const StyledInfoWrapper = styled.article`
 `;
 
 const StyledPaymentWrapper = styled.div`
-  margin: 1rem 0rem 0 0;
+  margin: 1rem 0rem 7rem 0;
   width: 100%;
   display: flex;
   align-items: flex;
@@ -105,12 +104,6 @@ const StyledHeading = styled(Heading)`
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
-
-  ${({ error }) =>
-    error &&
-    css`
-      margin-bottom: 8rem;
-    `} //
 `;
 
 // const SinglePlant = props => {
@@ -203,7 +196,6 @@ class SinglePlant extends React.Component {
 
     this.state = {
       slug,
-      pageWidth: window.innerWidth,
     };
   }
 
@@ -227,39 +219,27 @@ class SinglePlant extends React.Component {
       return (
         <>
           <Header />
-          <StyledWrapper error>
+          <StyledWrapper notfound>
             <Heading main>No such plant could be found</Heading>
-            <StyledLink error to="/">
+            <StyledLink to="/">
               <Button secondary>Go back</Button>
             </StyledLink>
           </StyledWrapper>
         </>
       );
     }
-    const { plantTitle, plantPrice, plantDescription, planttType } = plant;
-    const { pageWidth } = this.state;
+    const { plantTitle, plantPrice, plantDescription, plantType } = plant;
+
     return (
       <StyledWrapper>
-        {pageWidth >= 800 ? (
-          <PlantHalfPage />
-        ) : (
-          <>
-            <Header />
-          </>
-        )}
+        <PlantHalfPage />
         <StyledDeteailsWrapper>
-          {pageWidth >= 800 ? (
-            <StyledIconsWrapper>
-              <HeaderIcons />
-            </StyledIconsWrapper>
-          ) : null}
-
           <StyledTextWrapper>
             <StyledHeading main>{plantTitle}</StyledHeading>
             <StyledInfoWrapper>
               <Text main>
                 type:
-                <StyledTypeText>{planttType}</StyledTypeText>
+                <StyledTypeText>{plantType}</StyledTypeText>
               </Text>
               <Text main>{plantDescription}</Text>
               <FlowerPots />

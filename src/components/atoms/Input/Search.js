@@ -15,7 +15,7 @@ const StyledInput = styled.input`
   border-radius: 50px;
   background-image: url(${magnifierIcon});
   background-size: 15px;
-  background-position: 90% 50%;
+  background-position: 92% 50%;
   background-repeat: no-repeat;
   @media only screen and (min-width: 500px) {
     width: 28rem;
@@ -35,7 +35,16 @@ const StyledInput = styled.input`
 
 const Search = props => {
   const { name, value, onChange, placeholder } = props;
-  return <StyledInput name={name} value={value} onChange={onChange} placeholder={placeholder} />;
+  return (
+    <StyledInput
+      name={name}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      type="search"
+      autoComplete="off"
+    />
+  );
 };
 Search.propTypes = {
   name: PropTypes.string.isRequired,

@@ -4,9 +4,8 @@ import { CartContext } from '../context/CartContext';
 import PlantHalfPage from '../components/molecules/PlantHalfPage';
 import CheckoutItem from '../components/molecules/CheckoutItem';
 import Button from '../components/atoms/Button/Button';
-import HeaderIcons from '../components/molecules/HeaderIcons';
 import Header from '../components/organisms/Header';
-
+import StripeButton from '../components/atoms/Button/StripeButton';
 const StyledWrapper = styled.div`
   height: 100vh;
   display: flex;
@@ -14,7 +13,7 @@ const StyledWrapper = styled.div`
   justify-content: space-between;
   flex-direction: column;
 
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 1000px) {
     flex-direction: row;
     overflow: hidden;
   }
@@ -76,13 +75,6 @@ const StyledPrice = styled.span`
   margin-right: 2rem;
 `;
 
-const StyledHeaderIconsWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 0 7rem 0 0;
-`;
 const Checkout = () => {
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
   const { cartItems, addItem, removeItem, cartTotal } = useContext(CartContext);
@@ -99,7 +91,7 @@ const Checkout = () => {
   }, []);
   return (
     <StyledWrapper>
-      {pageWidth >= 800 ? (
+      {pageWidth >= 1000 ? (
         <PlantHalfPage />
       ) : (
         <>
@@ -107,12 +99,6 @@ const Checkout = () => {
         </>
       )}
       <StyledCheckoutSection>
-        {pageWidth >= 800 ? (
-          <StyledHeaderIconsWrapper>
-            <HeaderIcons />
-          </StyledHeaderIconsWrapper>
-        ) : null}
-
         <StyledCheckoutWrapper>
           <StyledProductsWrapper>
             {cartItems.length ? (
@@ -121,7 +107,7 @@ const Checkout = () => {
                   plant={cartItem}
                   addItem={addItem}
                   removeItem={removeItem}
-                  key={cartItem.title}
+                  key={cartItem.plantTitle}
                 />
               ))
             ) : (
@@ -130,7 +116,7 @@ const Checkout = () => {
           </StyledProductsWrapper>
           <StyledInfoWrapper>
             <StyledPrice>${cartTotal}</StyledPrice>
-            <Button secondary>Pay now</Button>
+            <StripeButton price={cartTotal} />
           </StyledInfoWrapper>
         </StyledCheckoutWrapper>
       </StyledCheckoutSection>

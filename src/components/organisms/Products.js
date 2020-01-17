@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Product from '../molecules/Product';
 import Text from '../atoms/Text/Text';
+import Loader from '../atoms/Loader/Loader';
 
 const StyledWrapper = styled.section`
   margin: 0 3rem;
@@ -34,6 +36,11 @@ const StyledNoMatchWrapper = styled.div`
 `;
 
 const Products = ({ plants }) => {
+  const { loading } = useContext(CartContext);
+
+  if (loading) {
+    return <Loader />;
+  }
   if (plants.length === 0) {
     return (
       <StyledNoMatchWrapper>
@@ -41,6 +48,7 @@ const Products = ({ plants }) => {
       </StyledNoMatchWrapper>
     );
   }
+
   return (
     <StyledWrapper>
       {plants.map(plant => (

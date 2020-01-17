@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { CartContext } from '../../../context/CartContext';
 import Plant from '../PlantIcon/PlantIcon';
-import PlantDefault from '../../../assets/svg/plant.svg';
 import Morphing from '../../../assets/svg/morphing.svg';
 
 const StyledPlantWrapper = styled.figure`
-  margin-top: 2rem;
+  margin-top: 6rem;
   position: relative;
 
   width: 25rem;
@@ -14,6 +12,7 @@ const StyledPlantWrapper = styled.figure`
   @media only screen and (min-width: 700px) {
     width: 30rem;
     height: 34rem;
+    margin-top: 2rem;
   }
 `;
 
@@ -35,12 +34,24 @@ const StyledPlant = styled.div`
   transform: translate(-45%, -40%);
 `;
 const StyledPlantDefault = styled.div`
-  width: 90%;
-  height: 90%;
+  width: 13rem;
+  height: 10rem;
+  margin-top: 2rem;
   position: absolute;
-  top: 35%;
-  left: 40%;
-  transform: translate(-45%, -40%);
+  top: -3rem;
+  left: 0rem;
+  @media only screen and (min-width: 700px) {
+    width: 18rem;
+    height: 12rem;
+    top: -4rem;
+    left: -1rem;
+    margin-top: 0rem;
+  }
+`;
+
+const StyledPlantIcon = styled(Plant)`
+  width: 100%;
+  height: 100%;
 `;
 
 const Heroplant = () => {
@@ -49,7 +60,7 @@ const Heroplant = () => {
       <StyledMorphing src={Morphing} />
       <StyledPlant>
         <StyledPlantDefault>
-          <Plant />
+          <StyledPlantIcon />
         </StyledPlantDefault>
       </StyledPlant>
     </StyledPlantWrapper>

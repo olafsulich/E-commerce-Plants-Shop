@@ -52,7 +52,21 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Montserrat", sans-serif;
     overflow-x:hidden;
 
+     ::-webkit-scrollbar {
+    width: 15px;
   }
+  ::-webkit-scrollbar-track {
+    background: hsla(204, 26%, 96%, 1);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsla(152, 94%, 33%, 0.5);
+  }
+  }
+  input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
 `;
 
 export default GlobalStyle;

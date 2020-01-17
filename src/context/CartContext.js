@@ -1,7 +1,6 @@
-import React, { createContext, useState, useEffect, useReducer } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DatoCMSData from '../DatoCMS/DatoCMS';
-
 import {
   addItemToCart,
   removeItemFromCart,
@@ -32,14 +31,15 @@ export const CartContext = createContext({
   hex3: '#4B6358',
   changeColor: () => {},
   clearColor: () => {},
+  loading: false,
 });
 
 const CartProvider = ({ children }) => {
-  const [hidden, setHidden] = useState(true);
   const [cartItems, setCartItems] = useState([]);
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
   const [plants, setPlants] = useState([]);
+  const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
   const [filtredPlants, setFiltredPlants] = useState([]);
   const [price, setPrice] = useState(0);
@@ -48,7 +48,7 @@ const CartProvider = ({ children }) => {
   const [hex1, setHex1] = useState('#B5B5B5');
   const [hex2, setHex2] = useState('#485550');
   const [hex3, setHex3] = useState('#4B6358');
-
+  const [loading, setLoading] = useState(true);
   const changeColor = e => {
     const color1 = e.target.getAttribute('data-hex1');
     const color2 = e.target.getAttribute('data-hex2');
@@ -65,8 +65,73 @@ const CartProvider = ({ children }) => {
 
   const addItem = item => setCartItems(addItemToCart(cartItems, item));
   const removeItem = item => setCartItems(removeItemFromCart(cartItems, item));
-  const toggleHidden = () => setHidden(!hidden);
   const clearItemFromCart = item => setCartItems(filterItemFromCart(cartItems, item));
+
+  const getPlant = slug => {
+    const templatePlants = [...plants];
+    const plantSlug = templatePlants.find(plant => plant.plantSlug === slug);
+    return plantSlug;
+  };
+
+  const handleChangeSearch = e => {
+    e.preventDefault();
+    const value = e.target.value;
+    setSearchName(value);
+  };
+
+  useEffect(() => {
+    handleFilteringPlantsByName();
+  }, [searchName]);
+
+  const handleFilteringPlantsByName = () => {
+    let tempPlants = [...plants];
+    if (searchName !== '') {
+      tempPlants = plants.filter(plant => {
+        const regex = new RegExp(searchName, 'gi');
+        return plant.plantTitle.match(regex);
+      });
+      setFiltredPlants(tempPlants);
+      return tempPlants;
+    }
+    setFiltredPlants(tempPlants);
+    return tempPlants;
+  };
+
+  const handleChangeType = e => {
+    e.preventDefault();
+    const value = e.target.value;
+    setType(value);
+  };
+
+  useEffect(() => {
+    handleFilteringPlantsByType();
+  }, [type]);
+
+  const handleFilteringPlantsByType = () => {
+    let tempPlants = [...plants];
+    if (type !== 'all') {
+      tempPlants = tempPlants.filter(plant => plant.plantType === type);
+    }
+    setFiltredPlants(tempPlants);
+    return tempPlants;
+  };
+
+  const handleChangePrice = e => {
+    e.preventDefault();
+    const value = e.target.value;
+    setPrice(value);
+  };
+
+  useEffect(() => {
+    handleFilteringPlantsByPrice();
+  }, [price]);
+
+  const handleFilteringPlantsByPrice = () => {
+    let tempPlants = [...plants];
+    tempPlants = tempPlants.filter(plant => plant.plantPrice <= price);
+    setFiltredPlants(tempPlants);
+    return tempPlants;
+  };
 
   const dataList = productsDataItems => {
     const template = productsDataItems.map(item => {
@@ -76,89 +141,49 @@ const CartProvider = ({ children }) => {
     return template;
   };
 
-  const getPlant = slug => {
-    const templatePlants = [...plants];
-    const plantSlug = templatePlants.find(plant => plant.plantSlug === slug);
-    return plantSlug;
-  };
-
-  const getPlantsData = async () => {
-    const response = await DatoCMSData.items.all().then(data => {
-      setPlants(dataList(data));
-      return response;
-    });
-  };
-
-  const handleChangeSearch = e => {
-    e.preventDefault();
-    const value = e.target.value;
-    setSearchName(value);
-  };
-
-  const handleFilteringPlantsByName = () => {
-    let tempPlants = [...plants];
-    if (searchName !== '') {
-      tempPlants = plants.filter(plant => {
-        const regex = new RegExp(searchName, 'gi');
-        return plant.plantTitle.match(regex);
-      });
-      return tempPlants;
-    }
-    setFiltredPlants(tempPlants);
-    return tempPlants;
-  };
-
-  // const filterPlants = () => {
-  //   let tempPlants = [...plants];
-  //   setPrice(parseInt(price, 10));
-
-  //   if (complexStateInitial.searchName !== '') {
-  //     tempPlants = tempPlants.filter(plant => {
-  //       const regex = new RegExp(searchName, 'gi');
-  //       return plant.plantTitle.match(regex);
-  //     });
-  //   }
-  //   if (complexStateInitial.type !== 'all') {
-  //     tempPlants = tempPlants.filter(plant => plant.plantType === type);
-  //   }
-  //   tempPlants = tempPlants.filter(plant => plant.plantPrice <= price);
-
-  //   setFiltredPlants(tempPlants);
-  // };
-
   useEffect(() => {
+    const getPlantsData = async () => {
+      const response = await DatoCMSData.items.all().then(dataPlant => {
+        setPlants(dataList(dataPlant));
+        setMaxPrice(Math.max(...dataPlant.map(plant => plant.plantPrice)));
+        setMinPrice(Math.min(...dataPlant.map(plant => plant.plantPrice)));
+        setFiltredPlants(dataPlant);
+        setPrice(Math.max(...dataPlant.map(plant => plant.plantPrice)));
+        setCartItemsCount(getCartItemsCount(cartItems));
+        setCartTotal(getCartTotal(cartItems));
+        setLoading(false);
+      });
+      return response;
+    };
     getPlantsData();
-    setMaxPrice(Math.max(...plants.map(plant => plant.plantPrice)));
-    setFiltredPlants(plants);
-    setPrice(maxPrice);
-    setCartItemsCount(getCartItemsCount(cartItems));
-    setCartTotal(getCartTotal(cartItems));
   }, [cartItems]);
 
   return (
     <CartContext.Provider
       value={{
-        hidden,
-        toggleHidden,
         cartItems,
         addItem,
         removeItem,
         clearItemFromCart,
+        handleChangeSearch,
+        handleChangeType,
+        handleChangePrice,
+        changeColor,
+        clearColor,
+        getPlant,
         cartItemsCount,
         cartTotal,
         plants,
         filtredPlants,
         price,
         maxPrice,
-        getPlant,
+        minPrice,
         type,
         searchName,
         hex1,
         hex2,
         hex3,
-        changeColor,
-        clearColor,
-        handleChangeSearch,
+        loading,
       }}
     >
       {children}

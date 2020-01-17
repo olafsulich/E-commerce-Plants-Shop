@@ -46,7 +46,7 @@ const FlowerPots = () => {
 
   return (
     <>
-      <StyledText main>Choose flowerpot</StyledText>
+      <StyledText main>Flowerpot preview</StyledText>
       <StyledWrapper>
         <StyledPot onClick={changeColor}>
           <img

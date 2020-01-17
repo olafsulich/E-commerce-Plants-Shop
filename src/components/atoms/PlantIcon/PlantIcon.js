@@ -4,13 +4,7 @@ import { CartContext } from '../../../context/CartContext';
 const PlantIcon = () => {
   const { hex1, hex2, hex3 } = useContext(CartContext);
   return (
-    <svg
-      width="248"
-      height="425"
-      viewBox="0 0 248 425"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 248 425" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g opacity="0.600006">
         <g opacity="0.600006">
           <path

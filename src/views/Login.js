@@ -25,7 +25,7 @@ const StyledFormWrapper = styled.div`
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  @media only screen and (min-width: 800px) {
+  @media only screen and (min-width: 1000px) {
     margin-top: 12rem;
   }
 `;
@@ -87,6 +87,12 @@ const StyledTextWrapper = styled.div`
   justify-content: center;
 `;
 
+const StyledAuthor = styled.a`
+  text-decoration: none;
+  margin: 0 0 0 0.2rem;
+  color: inherit;
+`;
+
 const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const [email, setEmail] = useState('');
@@ -132,8 +138,7 @@ const Login = () => {
 
   return (
     <StyledWrapper>
-      {pageWidth >= 800 ? <PlantHalfPage /> : null}
-
+      {pageWidth >= 1000 ? <PlantHalfPage isLoginPage={true} /> : null}
       <StyledFormWrapper>
         <StyledForm signin onSubmit={handleSubmit(newAccount ? handleSignup : handleSignin)}>
           <StyledHeadingWrapper>
@@ -193,7 +198,10 @@ const Login = () => {
             <span role="img" aria-label="Heart icon">
               💚
             </span>{' '}
-            by Olaf Sulich
+            by
+            <StyledAuthor href="https://example.net/author" rel="author">
+              Olaf Sulich
+            </StyledAuthor>{' '}
           </Text>
         </StyledFooter>
       </StyledFormWrapper>

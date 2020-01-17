@@ -51,7 +51,9 @@ const StyledButton = styled(Button)`
   width: 10rem;
   height: 3rem;
 `;
-
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 const Cart = ({ isVisible }) => {
   const { cartItems } = useContext(CartContext);
 
@@ -59,14 +61,14 @@ const Cart = ({ isVisible }) => {
     <StyledWrapper isVisible={isVisible}>
       <StyledProductsWrapper>
         {cartItems.length ? (
-          cartItems.map(cartItem => <CartProduct plant={cartItem} key={cartItem.title} />)
+          cartItems.map(cartItem => <CartProduct plant={cartItem} key={cartItem.plantTitle} />)
         ) : (
           <span>cart is empty</span>
         )}
       </StyledProductsWrapper>
-      <Link to="/checkout">
+      <StyledLink to="/checkout">
         <StyledButton secondary>Checkout</StyledButton>
-      </Link>
+      </StyledLink>
     </StyledWrapper>
   );
 };

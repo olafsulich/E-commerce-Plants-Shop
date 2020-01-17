@@ -36,18 +36,15 @@ const StyledWrapper = styled.form`
 const Preferences = () => {
   const context = useContext(CartContext);
   const {
-    handleChange,
-    // handleChangeSearch,
-    // handleChangeRange,
-    complexStateInitial,
     type,
     price,
     minPrice,
     maxPrice,
     searchName,
     handleChangeSearch,
+    handleChangeType,
+    handleChangePrice,
   } = context;
-  // console.log(complexStateInitial);
   return (
     <StyledFormWrapper>
       <StyledWrapper>
@@ -58,10 +55,10 @@ const Preferences = () => {
           placeholder="search plants"
           onChange={handleChangeSearch}
         ></Search>
-        <SelectInput name="type" value={type} onChange={handleChange} />
+        <SelectInput name="type" value={type} onChange={handleChangeType} />
         <RangeInput
           name="price"
-          onChange={handleChange}
+          onChange={handleChangePrice}
           value={price}
           minPrice={minPrice}
           maxPrice={maxPrice}
