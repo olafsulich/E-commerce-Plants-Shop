@@ -1,5 +1,5 @@
 const SiteClient = require('datocms-client').SiteClient;
 
-const client = new SiteClient('f8cb33c7ed821c6449d3df33559b56');
+const client = new SiteClient('2878717a758346046aadf66625054f');
 
 export default client;
