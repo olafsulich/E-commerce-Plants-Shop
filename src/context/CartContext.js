@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import DatoCMSData from '../DatoCMS/DatoCMS';
+
 import {
   addItemToCart,
   removeItemFromCart,
@@ -32,6 +33,7 @@ export const CartContext = createContext({
   changeColor: () => {},
   clearColor: () => {},
   loading: false,
+  user: {},
 });
 
 const CartProvider = ({ children }) => {
@@ -49,6 +51,7 @@ const CartProvider = ({ children }) => {
   const [hex2, setHex2] = useState('#485550');
   const [hex3, setHex3] = useState('#4B6358');
   const [loading, setLoading] = useState(true);
+
   const changeColor = e => {
     const color1 = e.target.getAttribute('data-hex1');
     const color2 = e.target.getAttribute('data-hex2');
@@ -79,10 +82,6 @@ const CartProvider = ({ children }) => {
     setSearchName(value);
   };
 
-  useEffect(() => {
-    handleFilteringPlantsByName();
-  }, [searchName]);
-
   const handleFilteringPlantsByName = () => {
     let tempPlants = [...plants];
     if (searchName !== '') {
@@ -96,16 +95,15 @@ const CartProvider = ({ children }) => {
     setFiltredPlants(tempPlants);
     return tempPlants;
   };
+  useEffect(() => {
+    handleFilteringPlantsByName();
+  }, [searchName]);
 
   const handleChangeType = e => {
     e.preventDefault();
     const value = e.target.value;
     setType(value);
   };
-
-  useEffect(() => {
-    handleFilteringPlantsByType();
-  }, [type]);
 
   const handleFilteringPlantsByType = () => {
     let tempPlants = [...plants];
@@ -115,6 +113,9 @@ const CartProvider = ({ children }) => {
     setFiltredPlants(tempPlants);
     return tempPlants;
   };
+  useEffect(() => {
+    handleFilteringPlantsByType();
+  }, [type]);
 
   const handleChangePrice = e => {
     e.preventDefault();
@@ -122,16 +123,15 @@ const CartProvider = ({ children }) => {
     setPrice(value);
   };
 
-  useEffect(() => {
-    handleFilteringPlantsByPrice();
-  }, [price]);
-
   const handleFilteringPlantsByPrice = () => {
     let tempPlants = [...plants];
     tempPlants = tempPlants.filter(plant => plant.plantPrice <= price);
     setFiltredPlants(tempPlants);
     return tempPlants;
   };
+  useEffect(() => {
+    handleFilteringPlantsByPrice();
+  }, [price]);
 
   const dataList = productsDataItems => {
     const template = productsDataItems.map(item => {

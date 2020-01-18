@@ -2,14 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/plantsicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <meta name="description" content="Plants & Home is a plants online store, you can search and filter your favourite plants and add them to cart.Finally you can buy added plants to cart" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-icon-180x180.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -24,11 +21,256 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Plants & home</title>
+    <style type="text/css">
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        margin: 0;
+        padding: 0;
+      }
+
+      button {
+        background: none;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+      @media only screen and (min-width: 425px) {
+        html {
+          font-size: 67.5%;
+        }
+      }
+      @media only screen and (min-width: 500px) {
+        html {
+          font-size: 70.5%;
+        }
+      }
+      @media only screen and (min-width: 750px) {
+        html {
+          font-size: 75.5%;
+        }
+      }
+      @media only screen and (min-width: 1000px) {
+        html {
+          font-size: 77.5%;
+        }
+      }
+      @media only screen and (min-width: 1200px) {
+        html {
+          font-size: 80.5%;
+        }
+      }
+      @media only screen and (min-width: 1400px) {
+        html {
+          font-size: 82.5%;
+        }
+      }
+      @media only screen and (min-width: 1650px) {
+        html {
+          font-size: 85.5%;
+        }
+      }
+      @media only screen and (min-width: 1800px) {
+        html {
+          font-size: 100%;
+        }
+      }
+
+      body {
+        width: 100%;
+        font-size: 1.6rem;
+        font-family: 'Montserrat', sans-serif;
+        overflow-x: hidden;
+      }
+      ::-webkit-scrollbar {
+        width: 15px;
+      }
+      ::-webkit-scrollbar-track {
+        background: hsla(204, 26%, 96%, 1);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: hsla(152, 94%, 33%, 0.5);
+      }
+      input[type='search']::-webkit-search-cancel-button {
+        display: none;
+      }
+      *:focus {
+        outline-color: transparent;
+      }
+      .header {
+        width: 100%;
+        height: 10rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 3rem 2rem;
+        margin: 0 auto;
+      }
+      @media only screen and (min-width: 1300px) {
+        .header {
+          padding: 4rem 4rem;
+        }
+      }
+      .header__logo {
+        padding: 4rem 4rem;
+      }
+      .header__icons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+      }
+      .header__icons__button {
+        background-image: url('%PUBLIC_URL%/logout.svg');
+        width: 2.2rem;
+        height: 2.2rem;
+      }
+      .header__icons__link {
+        text-decoration: none;
+      }
+      .header__icons__cart {
+        width: 2.6rem;
+        height: 2.6rem;
+        margin: 0 0.8rem;
+        position: relative;
+      }
+      .header__icons__cart__button {
+        background-image: url('%PUBLIC_URL%/cart.svg');
+        width: 100%;
+        height: 100%;
+      }
+      .header__icons__cart__counter {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+        position: absolute;
+        font-size: 1rem;
+        color: #000;
+        z-index: 2;
+      }
+      .hero {
+        margin-top: 6rem;
+        position: relative;
+        width: 25rem;
+        height: 27rem;
+      }
+
+      .hero__image {
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+      }
+      .hero__plant {
+        width: 90%;
+        height: 90%;
+        position: absolute;
+        top: 30%;
+        left: 70%;
+        transform: translate(-45%, -40%);
+      }
+
+      .hero__plant__default {
+        width: 13rem;
+        height: 10rem;
+        margin-top: 2rem;
+        position: absolute;
+        top: -3rem;
+        left: 0rem;
+      }
+      .hero__plant__default__plant {
+        width: 100%;
+        height: 100%;
+      }
+
+      @media only screen and (min-width: 700px) {
+        .hero {
+          width: 30rem;
+          height: 34rem;
+          margin-top: 2rem;
+        }
+        .hero__plant__default {
+          width: 18rem;
+          height: 12rem;
+          top: -4rem;
+          left: -1rem;
+          margin-top: 0rem;
+        }
+      }
+      .loading {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .loading__circle {
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 30px;
+        width: 8rem;
+        height: 140px;
+      }
+      .loading__circle__icon {
+        box-sizing: border-box;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 100%;
+        border: 10px solid hsla(204, 26%, 96%, 1);
+        border-top-color: hsla(152, 94%, 33%, 1);
+        animation: spin 1s infinite linear;
+      }
+      @keyframes spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root">
+<div>
+      <header class="header">
+        <a href="/">
+          <h1 class="header__logo">Plants & Home</h1>
+        </a>
+        <nav class="header__icons">
+          <a href="/checkout" class="header__icons__link">
+            <div class="header__icons__button"></div>
+          </a>
+          <div class="headeer_icons_cart">
+            <button class="header__icons__cart__button"></button>
+            <spa class="header__icons__cart__couter">0</spa>
+          </div>
+        </nav>
+      </header>
+      <figure class="hero">
+        <img src="/src/assets/svg/morphing.svg" alt="morphing" />
+        <div class="hero__plant">
+          <div class="hero__plant__default">
+            <img src="%PUBLIC_URL%/plant.svg" alt="plant" class="hero__plant__default__plant" />
+          </div>
+        </div>
+      </figure>
+      <div class="loading">
+        <div class="loading__circle">
+          <div class="loading__circle__icon"></div>
+        </div>
+      </div>
+    </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +281,27 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker
+            .register('worker.js')
+            .then(
+              function(registration) {
+                console.log('Worker registration successful', registration.scope);
+              },
+              function(err) {
+                console.log('Worker registration failed', err);
+              },
+            )
+            .catch(function(err) {
+              console.log(err);
+            });
+        });
+      } else {
+        console.log('Service Worker is not supported by browser.');
+      }
+    </script>
   </body>
 </html>

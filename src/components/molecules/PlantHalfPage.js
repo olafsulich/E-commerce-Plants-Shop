@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Text from '../atoms/Text/Text';
 import Heroplant from '../atoms/Plant/Plant';
 import HeaderIcons from './HeaderIcons';
+
 const StyledPlantWrapper = styled.div`
   background: hsl(153, 91%, 48%, 40%);
+  background-color: ${({ theme }) => theme.halfPlantColor};
   width: 100%;
   height: 100vh;
   display: flex;
@@ -30,7 +33,7 @@ const StyledLink = styled(Link)`
 `;
 
 const PlantHalfPage = props => {
-  const isLoginPage = props.isLoginPage;
+  const { isLoginPage } = props;
   return (
     <StyledPlantWrapper>
       <StyledLogoWrapper>
@@ -44,6 +47,10 @@ const PlantHalfPage = props => {
       <Heroplant />
     </StyledPlantWrapper>
   );
+};
+
+PlantHalfPage.propTypes = {
+  isLoginPage: PropTypes.bool.isRequired,
 };
 
 export default PlantHalfPage;

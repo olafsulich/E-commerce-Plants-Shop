@@ -52,7 +52,7 @@ const Preferences = () => {
           search
           name="searchName"
           value={searchName}
-          placeholder="search plants"
+          placeholder="e.g. Avens"
           onChange={handleChangeSearch}
         ></Search>
         <SelectInput name="type" value={type} onChange={handleChangeType} />

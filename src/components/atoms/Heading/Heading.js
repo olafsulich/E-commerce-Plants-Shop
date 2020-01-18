@@ -28,7 +28,7 @@ const StyledHeading = styled.h2`
         position: absolute;
         width: 100%;
         height: 40%;
-        background-color: ${({ theme }) => theme.primaryColor};
+        background-color: ${({ theme }) => theme.headingBeforeColor};
         z-index: -1;
         top: 55%;
         left: 10%;

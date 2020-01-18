@@ -4,6 +4,7 @@ import Products from '../components/organisms/Products';
 import Hero from '../components/organisms/Hero';
 import Preferences from '../components/molecules/Preferences';
 import Header from '../components/organisms/Header';
+
 const Home = () => {
   const { plants, filtredPlants } = useContext(CartContext);
   return (

@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier", "prettier/react", "plugin:jsx-a11y/recommended"],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "parser": "babel-eslint",
   "env": {
     "jest": true
@@ -10,13 +10,13 @@
     "fetch": true,
     "window": true
   },
-  "plugins": ["jsx-a11y"],
 
   "rules": {
     "react/forbid-prop-types": 0,
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 1,
+    "no-console": "off",
     "react/jsx-filename-extension": [
       1,
       {
@@ -24,8 +24,7 @@
       }
     ],
     "no-unused-vars": 0,
-    "prefer-destructuring": 0,
-    "jsx-a11y/rule-name": 2
+    "prefer-destructuring": 0
   },
   "settings": {
     "import/resolver": {

@@ -3,7 +3,7 @@ import removeIcon from '../../../assets/svg/removeIcon.svg';
 
 const StyledButton = styled.button`
   display: block;
-  color: ${({ theme }) => theme.fontColorText};
+  color: ${({ theme }) => theme.fontColorHeading};
   border: none;
   text-decoration: none;
   cursor: pointer;
@@ -32,10 +32,10 @@ const StyledButton = styled.button`
   ${({ secondary }) =>
     secondary &&
     css`
-      color: #fff;
+      color: ${({ theme }) => theme.fontColorHeading};
       font-weight: ${({ theme }) => theme.regular};
       font-size: 1.3rem;
-      background-color: ${({ theme }) => theme.fontColorPrimary};
+      background-color: ${({ theme }) => theme.buttonColor};
       width: 8rem;
       height: 3rem;
       padding: 0.5rem;

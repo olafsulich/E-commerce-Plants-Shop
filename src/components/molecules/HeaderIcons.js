@@ -36,16 +36,16 @@ const HeaderIcons = () => {
     <StyledWrapper>
       {pageWidth <= 700 ? (
         <StyledLink to="/checkout">
-          <CartButton />
+          <CartButton aria-label="cart" />
         </StyledLink>
       ) : (
         <>
-          <CartButton onClick={handleCartOpen} />
+          <CartButton aria-label="cart" onClick={handleCartOpen} />
           <Cart isVisible={CartOpen} />
         </>
       )}
 
-      <StyledLogoutButton onClick={handlelogout} />
+      <StyledLogoutButton aria-label="logut" onClick={handlelogout} />
     </StyledWrapper>
   );
 };

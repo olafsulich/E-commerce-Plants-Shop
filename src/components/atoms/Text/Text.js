@@ -4,7 +4,7 @@ const Text = styled.p`
   ${({ main }) =>
     main &&
     css`
-      color: ${({ theme }) => theme.fontColorText};
+      color: ${({ theme }) => theme.fontColorHeading};
       font-size: 1.5rem;
       line-height: 2.25rem;
       font-weight: ${({ theme }) => theme.light};

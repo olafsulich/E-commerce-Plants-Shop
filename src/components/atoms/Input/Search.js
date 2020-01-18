@@ -3,14 +3,26 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import magnifierIcon from '../../../assets/svg/magify.svg';
 
-const StyledInput = styled.input`
+const SelectWrapper = styled.div`
+  width: 100%;
   width: 24rem;
+
+  @media only screen and (min-width: 500px) {
+    width: 28rem;
+  }
+  @media only screen and (min-width: 700px) {
+    width: 24rem;
+  }
+`;
+
+const StyledInput = styled.input`
+  width: 100%;
+  height: 100%;
   padding: 15px 30px;
   font-size: 1.2rem;
   font-weight: ${({ theme }) => theme.regular};
   background-color: ${({ theme }) => theme.secondaryColor};
   padding: 10px 20px 10px 20px;
-  margin: 2rem 0;
   border: none;
   border-radius: 50px;
   background-image: url(${magnifierIcon});
@@ -20,33 +32,36 @@ const StyledInput = styled.input`
   &:focus {
     outline-color: ${({ theme }) => theme.fontColorPrimary};
   }
-  @media only screen and (min-width: 500px) {
-    width: 28rem;
-  }
-  @media only screen and (min-width: 700px) {
-    width: 24rem;
-  }
+
   ::placeholder {
     letter-spacing: 1px;
     color: ${({ theme }) => theme.fontColorText};
   }
-
-  @media only screen and (min-width: 700px) {
-    margin: 0 2rem;
-  }
+`;
+const StyledLabel = styled.label`
+  display: block;
+  font-size: 0.95rem;
+  font-weight: ${({ theme }) => theme.regular};
+  text-align: start;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
 `;
 
 const Search = props => {
   const { name, value, onChange, placeholder } = props;
   return (
-    <StyledInput
-      name={name}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      type="search"
-      autoComplete="off"
-    />
+    <SelectWrapper>
+      <StyledLabel>Search</StyledLabel>
+      <StyledInput
+        aria-label="search input"
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        type="search"
+        autoComplete="off"
+      />
+    </SelectWrapper>
   );
 };
 Search.propTypes = {

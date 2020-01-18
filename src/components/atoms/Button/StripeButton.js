@@ -28,6 +28,7 @@ const StripeButton = ({ price }) => {
   return (
     <StripeCheckout
       label="Pay now"
+      aria-label="Pay now"
       name="Plants & Home"
       billingAddress
       shippingAddress

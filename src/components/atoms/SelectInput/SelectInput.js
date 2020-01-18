@@ -59,6 +59,13 @@ const StyledOption = styled.option`
     color: #fff;
   }
 `;
+const StyledLabel = styled.label`
+  display: block;
+  font-size: 0.95rem;
+  font-weight: ${({ theme }) => theme.regular};
+  text-align: start;
+  margin-bottom: 0.5rem;
+`;
 
 const SelectInput = props => {
   const context = useContext(CartContext);
@@ -79,7 +86,8 @@ const SelectInput = props => {
   });
   return (
     <SelectWrapper>
-      <StyledSelect name={name} onChange={onChange} value={value}>
+      <StyledLabel>Select type</StyledLabel>
+      <StyledSelect aria-label="input select" name={name} onChange={onChange} value={value}>
         {types}
       </StyledSelect>
     </SelectWrapper>

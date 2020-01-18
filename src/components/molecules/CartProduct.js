@@ -57,4 +57,4 @@ const CartProduct = ({ plant: { plantImage, plantTitle, plantPrice, quantity } }
 CartProduct.propTypes = {
   plant: PropTypes.object.isRequired,
 };
-export default CartProduct;
+export default React.memo(CartProduct);

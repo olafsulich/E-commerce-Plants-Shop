@@ -33,13 +33,16 @@ const CartButton = props => {
   const { onClick } = props;
   return (
     <StyledWrapper>
-      <StyledButton onClick={onClick}>
+      <StyledButton aria-label="cart" onClick={onClick}>
         <StyledCounter>{cartItemsCount}</StyledCounter>
       </StyledButton>
     </StyledWrapper>
   );
 };
 CartButton.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
+};
+CartButton.defaultProps = {
+  onClick: null,
 };
 export default CartButton;

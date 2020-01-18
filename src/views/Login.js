@@ -245,7 +245,7 @@ const Login = () => {
           </StyledButtonsWrapper>
           <StyledTextWrapper>
             <Text>{newAccount ? 'Have account?' : "Haven't got account?"}</Text>
-            <Button onClick={handleNewAccount} active>
+            <Button aria-label="sign in/sign up" onClick={handleNewAccount} active>
               {newAccount ? 'Sign in' : 'Sign up'}
             </Button>
           </StyledTextWrapper>

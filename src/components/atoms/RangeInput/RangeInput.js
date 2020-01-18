@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const InputWrapper = styled.div`
+const StyledInputWrapper = styled.div`
   width: 24rem;
 
   @media only screen and (min-width: 500px) {
@@ -112,13 +112,12 @@ const InputWrapper = styled.div`
   }
 `;
 
-const Input = styled.input`
+const StyledInput = styled.input`
   cursor: pointer;
   width: 100%;
-  margin-top: 1em;
 `;
 
-const Label = styled.label`
+const StyledLabel = styled.label`
   display: block;
   font-size: 0.95rem;
   font-weight: ${({ theme }) => theme.regular};
@@ -128,11 +127,12 @@ const Label = styled.label`
 const RangeInput = props => {
   const { onChange, minPrice, maxPrice, value, name } = props;
   return (
-    <InputWrapper>
-      <Label htmlFor="range">
+    <StyledInputWrapper>
+      <StyledLabel htmlFor="range">
         Price range ${minPrice} - ${maxPrice}
-      </Label>
-      <Input
+      </StyledLabel>
+      <StyledInput
+        aria-label="price range"
         name={name}
         type="range"
         min={minPrice}
@@ -141,7 +141,7 @@ const RangeInput = props => {
         id="range"
         onChange={onChange}
       />
-    </InputWrapper>
+    </StyledInputWrapper>
   );
 };
 RangeInput.propTypes = {
@@ -150,6 +150,5 @@ RangeInput.propTypes = {
   value: PropTypes.any.isRequired,
   minPrice: PropTypes.number.isRequired,
   maxPrice: PropTypes.number.isRequired,
-  price: PropTypes.any.isRequired,
 };
 export default RangeInput;

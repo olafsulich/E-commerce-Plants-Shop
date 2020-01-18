@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import CartProvider from '../context/CartContext';
 import MainTemplate from '../templates/MainTemplate';
-import Home from './Home';
-import SinglePlant from './SinglePlant';
-import Login from './Login';
-import Checkout from './Checkout';
-import NotFound from './NotFound';
 import { fire } from '../firebase/Firebase';
+import Loader from '../components/atoms/Loader/Loader';
+import ErrorBoundary from '../components/organisms/ErrorBoundary';
+
+const Home = lazy(() => import('./Home'));
+const SinglePlant = lazy(() => import('./SinglePlant'));
+const Login = lazy(() => import('./Login'));
+const Checkout = lazy(() => import('./Checkout'));
 
 class Root extends React.Component {
   state = {
     user: {},
   };
-
-  unsubscribeFromAuth = null;
 
   componentDidMount = () => {
     this.authListener();
@@ -40,13 +40,16 @@ class Root extends React.Component {
           <MainTemplate>
             <div>
               {!user ? (
-                <Login />
+                <Suspense fallback={<Loader />}>
+                  <Login />
+                </Suspense>
               ) : (
                 <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/checkout" component={Checkout} />
-                  <Route exact path="/plants/:slug" component={SinglePlant} />
-                  <Route component={NotFound} />
+                  <Suspense fallback={<Loader />}>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/checkout" component={Checkout} />
+                    <Route exact path="/plants/:slug" component={SinglePlant} />
+                  </Suspense>
                 </Switch>
               )}
             </div>
@@ -57,4 +60,10 @@ class Root extends React.Component {
   }
 }
 
-export default Root;
+export default function ErrorBoundaryFunc(props) {
+  return (
+    <ErrorBoundary>
+      <Root {...props} />
+    </ErrorBoundary>
+  );
+}

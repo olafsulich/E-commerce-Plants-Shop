@@ -105,4 +105,4 @@ const CheckoutItem = ({ plant }) => {
 CheckoutItem.propTypes = {
   plant: PropTypes.object.isRequired,
 };
-export default CheckoutItem;
+export default React.memo(CheckoutItem);

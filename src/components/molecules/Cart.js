@@ -66,7 +66,9 @@ const Cart = ({ isVisible }) => {
         )}
       </StyledProductsWrapper>
       <StyledLink to="/checkout">
-        <StyledButton secondary>Checkout</StyledButton>
+        <StyledButton aria-label="Checkout" secondary>
+          Checkout
+        </StyledButton>
       </StyledLink>
     </StyledWrapper>
   );
