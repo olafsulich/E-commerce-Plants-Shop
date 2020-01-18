@@ -4,7 +4,7 @@ import StripeCheckout from 'react-stripe-checkout';
 // import axios from 'axios';
 const StripeButton = ({ price }) => {
   const priceStripe = price * 100;
-  const key = 'pk_live_73qJFkKXVNHxK064HIQgzdHI00GiZrTneB';
+  const key = 'pk_test_5R7ANtmXdmeaY7ahK6WWSEvr00lBQBoamY';
   // const onToken = token => {
   //   axios({
   //     url: 'payment',
