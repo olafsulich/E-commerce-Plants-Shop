@@ -5,7 +5,10 @@
     <link rel="icon" href="%PUBLIC_URL%/plantsicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Plants & Home is a plants online store, you can search and filter your favourite plants and add them to cart.Finally you can buy added plants to cart" />
+    <meta
+      name="description"
+      content="Plants & Home is a plants online store, you can search and filter your favourite plants and add them to cart.Finally you can buy added plants to cart"
+    />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-icon-180x180.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -21,7 +24,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Plants & home</title>
+    <!-- <title>Plants & home</title>
     <style type="text/css">
       *,
       *::before,
@@ -235,41 +238,41 @@
         to {
           transform: rotate(360deg);
         }
-      }
+      } -->
     </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
-<div>
-      <header class="header">
-        <a href="/">
-          <h1 class="header__logo">Plants & Home</h1>
-        </a>
-        <nav class="header__icons">
-          <a href="/checkout" class="header__icons__link">
-            <div class="header__icons__button"></div>
+      <!-- <div>
+        <header class="header">
+          <a href="/">
+            <h1 class="header__logo">Plants & Home</h1>
           </a>
-          <div class="headeer_icons_cart">
-            <button class="header__icons__cart__button"></button>
-            <spa class="header__icons__cart__couter">0</spa>
+          <nav class="header__icons">
+            <a href="/checkout" class="header__icons__link">
+              <div class="header__icons__button"></div>
+            </a>
+            <div class="headeer_icons_cart">
+              <button class="header__icons__cart__button"></button>
+              <spa class="header__icons__cart__couter">0</spa>
+            </div>
+          </nav>
+        </header>
+        <figure class="hero">
+          <img src="/src/assets/svg/morphing.svg" alt="morphing" />
+          <div class="hero__plant">
+            <div class="hero__plant__default">
+              <img src="%PUBLIC_URL%/plant.svg" alt="plant" class="hero__plant__default__plant" />
+            </div>
           </div>
-        </nav>
-      </header>
-      <figure class="hero">
-        <img src="/src/assets/svg/morphing.svg" alt="morphing" />
-        <div class="hero__plant">
-          <div class="hero__plant__default">
-            <img src="%PUBLIC_URL%/plant.svg" alt="plant" class="hero__plant__default__plant" />
+        </figure>
+        <div class="loading">
+          <div class="loading__circle">
+            <div class="loading__circle__icon"></div>
           </div>
         </div>
-      </figure>
-      <div class="loading">
-        <div class="loading__circle">
-          <div class="loading__circle__icon"></div>
-        </div>
-      </div>
-    </div>
+      </div> -->
     </div>
     <!--
       This HTML file is a template.
@@ -281,27 +284,27 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    
+
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker
-            .register('worker.js')
-            .then(
-              function(registration) {
-                console.log('Worker registration successful', registration.scope);
-              },
-              function(err) {
-                console.log('Worker registration failed', err);
-              },
-            )
-            .catch(function(err) {
-              console.log(err);
-            });
-        });
-      } else {
-        console.log('Service Worker is not supported by browser.');
-      }
+      // if ('serviceWorker' in navigator) {
+      //   window.addEventListener('load', function() {
+      //     navigator.serviceWorker
+      //       .register('worker.js')
+      //       .then(
+      //         function(registration) {
+      //           console.log('Worker registration successful', registration.scope);
+      //         },
+      //         function(err) {
+      //           console.log('Worker registration failed', err);
+      //         },
+      //       )
+      //       .catch(function(err) {
+      //         console.log(err);
+      //       });
+      //   });
+      // } else {
+      //   console.log('Service Worker is not supported by browser.');
+      // }
     </script>
   </body>
 </html>

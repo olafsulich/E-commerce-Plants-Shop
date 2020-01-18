@@ -26,18 +26,18 @@ self.addEventListener('fetch', event => {
   );
 });
 
-// Update a service worker
-self.addEventListener('activate', event => {
-  const cacheWhitelist = ['Plants & Home'];
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        }),
-      );
-    }),
-  );
-});
+// // Update a service worker
+// self.addEventListener('activate', event => {
+//   const cacheWhitelist = ['Plants & Home'];
+//   event.waitUntil(
+//     caches.keys().then(cacheNames => {
+//       return Promise.all(
+//         cacheNames.map(cacheName => {
+//           if (cacheWhitelist.indexOf(cacheName) === -1) {
+//             return caches.delete(cacheName);
+//           }
+//         }),
+//       );
+//     }),
+//   );
+// });
