@@ -7,7 +7,7 @@ export const theme = {
   fontColorHeading: 'hsla(0, 0%, 0%, 1)',
   buttonColor: 'hsl(153, 91%, 48%, 60%)',
   halfPlantColor: 'hsl(153, 91%, 48%, 40%)',
-  headingBeforeColor: 'hsl(153, 91%, 48%, 20%)',
+  headingBeforeColor: '	hsla(152, 94%, 33%, 0.2)',
   light: 400,
   regular: 500,
   bold: 700,
