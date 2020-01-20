@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledTitleWrapper = styled.div`
+const StyledTitleWrapper = styled.section`
   position: relative;
   display: block;
   margin-bottom: 1.4em;
@@ -42,7 +42,7 @@ const Product = ({ title, src, slug }) => {
     <StyledLink to={`/plants/${slug}`}>
       <StyledTitleWrapper key={title}>
         <StyledTitle>{title}</StyledTitle>
-        <StyledImageWrapper>
+        <StyledImageWrapper className="image_reveal">
           <StyledImage src={src} alt={`${title} plant`} />
         </StyledImageWrapper>
       </StyledTitleWrapper>
