@@ -144,19 +144,7 @@ const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [pageWidth, setPageWidth] = useState(window.innerWidth);
   const [newAccount, setNewAccount] = useState(false);
-
-  const updateDimensions = () => {
-    setPageWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', updateDimensions);
-    return () => {
-      window.removeEventListener('resize', updateDimensions);
-    };
-  }, []);
 
   const handleEmailChange = e => {
     setEmail(e.target.value);
