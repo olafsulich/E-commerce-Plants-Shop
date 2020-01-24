@@ -46,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     width:100%;
+    height:auto;
     font-size: 1.6rem;
     font-family: "Montserrat", sans-serif;
     overflow-x:hidden;

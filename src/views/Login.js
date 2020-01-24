@@ -9,17 +9,22 @@ import PlantHalfPage from '../components/molecules/PlantHalfPage';
 import Text from '../components/atoms/Text/Text';
 
 const StyledWrapper = styled.div`
-  overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-direction: row;
+  flex-direction: column;
+
+  @media only screen and (min-width: 1000px) {
+    flex-direction: row;
+    overflow: hidden !important;
+    height: 100vh;
+  }
 `;
 
 const StyledFormWrapper = styled.div`
-  margin-top: 6rem;
-  margin-bottom: 8rem;
+  min-height: 80vh;
+  margin-top: 8rem;
   width: 50%;
   height: 100%;
   display: flex;
@@ -27,8 +32,8 @@ const StyledFormWrapper = styled.div`
   justify-content: space-around;
   flex-direction: column;
   @media only screen and (min-width: 1000px) {
-    margin-top: 12rem;
     margin-bottom: 0rem;
+    min-height: auto;
   }
 `;
 
@@ -94,7 +99,7 @@ const StyledFooter = styled.footer`
   width: 100%;
   text-align: center;
   font-size: 1.2rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
 `;
 
 const StyledTextWrapper = styled.div`
@@ -183,7 +188,7 @@ const Login = () => {
 
   return (
     <StyledWrapper>
-      {pageWidth >= 1000 ? <PlantHalfPage isLoginPage={true} /> : null}
+      <PlantHalfPage isLoginPage={true} />
       <StyledFormWrapper>
         <StyledForm signin onSubmit={handleSubmit(newAccount ? handleSignup : handleSignin)}>
           <StyledHeadingWrapper>
