@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { CartContext } from '../../../context/CartContext';
@@ -28,7 +28,7 @@ const StyledCounter = styled.span`
   z-index: 2;
 `;
 
-const CartButton = props => {
+const CartButton = memo(props => {
   const { cartItemsCount } = useContext(CartContext);
   const { onClick } = props;
   return (
@@ -38,7 +38,7 @@ const CartButton = props => {
       </StyledButton>
     </StyledWrapper>
   );
-};
+});
 CartButton.propTypes = {
   onClick: PropTypes.func,
 };

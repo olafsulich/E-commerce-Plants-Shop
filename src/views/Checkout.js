@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, lazy, Suspense } from 'react';
 import styled from 'styled-components';
 import { CartContext } from '../context/CartContext';
 import PlantHalfPage from '../components/molecules/PlantHalfPage';
-import CheckoutItem from '../components/molecules/CheckoutItem';
 import Header from '../components/organisms/Header';
 import StripeButton from '../components/atoms/Button/StripeButton';
+import Loader from '../components/atoms/Loader/Loader';
 
+const CheckoutItem = lazy(() => import('../components/molecules/CheckoutItem'));
 const StyledWrapper = styled.div`
   height: 100vh;
   display: flex;
@@ -100,20 +101,23 @@ const Checkout = () => {
       )}
       <StyledCheckoutSection>
         <StyledCheckoutWrapper>
-          <StyledProductsWrapper>
-            {cartItems.length ? (
-              cartItems.map(cartItem => (
-                <CheckoutItem
-                  plant={cartItem}
-                  addItem={addItem}
-                  removeItem={removeItem}
-                  key={cartItem.plantTitle}
-                />
-              ))
-            ) : (
-              <span>cart is empty</span>
-            )}
-          </StyledProductsWrapper>
+          <Suspense fallback={<Loader />}>
+            <StyledProductsWrapper>
+              {cartItems.length ? (
+                cartItems.map(cartItem => (
+                  <CheckoutItem
+                    plant={cartItem}
+                    addItem={addItem}
+                    removeItem={removeItem}
+                    key={cartItem.plantTitle}
+                  />
+                ))
+              ) : (
+                <span>cart is empty</span>
+              )}
+            </StyledProductsWrapper>
+          </Suspense>
+
           <StyledInfoWrapper>
             <StyledPrice>${cartTotal}</StyledPrice>
             <StripeButton price={cartTotal} />

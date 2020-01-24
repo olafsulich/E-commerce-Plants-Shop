@@ -3,7 +3,7 @@ self.addEventListener('install', function(event) {
   console.log('SW Installed');
   event.waitUntil(
     caches.open('static').then(function(cache) {
-      cache.addAll(['/offline.html']);
+      cache.addAll(['/']);
     }),
   );
 });

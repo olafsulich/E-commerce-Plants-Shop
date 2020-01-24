@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Button from '../atoms/Button/Button';
 import CartButton from '../atoms/Button/CartButton';
-import Cart from './Cart';
 import LogoutIcon from '../../assets/svg/logout.svg';
 import { fire } from '../../firebase/Firebase';
+import Loader from '../atoms/Loader/Loader';
+
+const Cart = lazy(() => import('./Cart'));
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -41,7 +43,9 @@ const HeaderIcons = () => {
       ) : (
         <>
           <CartButton aria-label="cart" onClick={handleCartOpen} />
-          <Cart isVisible={CartOpen} />
+          <Suspense fallback={<Loader />}>
+            <Cart isVisible={CartOpen} />
+          </Suspense>
         </>
       )}
 
