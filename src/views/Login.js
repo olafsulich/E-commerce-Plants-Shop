@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { fire } from '../firebase/Firebase';
@@ -50,7 +50,6 @@ const StyledForm = styled.form`
 const StyledInput = styled(Input)`
   position: relative;
   padding: 1.2rem 0.5rem;
-  /* margin: 0.5rem 0 1rem 0; */
   :last-of-type {
     margin: 1.5rem 0 1rem 0;
   }
