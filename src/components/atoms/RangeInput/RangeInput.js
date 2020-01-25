@@ -4,12 +4,12 @@ import styled from 'styled-components';
 
 const StyledInputWrapper = styled.div`
   width: 24rem;
+  margin: 0 1.5rem;
 
   @media only screen and (min-width: 500px) {
     width: 28rem;
   }
   @media only screen and (min-width: 700px) {
-    margin: 0 2rem;
     width: 24rem;
   }
   input[type='range'] {
@@ -72,7 +72,6 @@ const StyledInputWrapper = styled.div`
     cursor: pointer;
   }
   input[type='range']:focus {
-    outline-color: ${({ theme }) => theme.fontColorPrimary};
     &::-webkit-slider-thumb:after {
       position: absolute;
       cursor: pointer;

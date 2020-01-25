@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Button from '../atoms/Button/Button';
+import { CartContext } from '../../context/CartContext';
 
 const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   z-index: 10;
   padding: 2.5rem 0.5rem 0 0;
+  min-width: 200px;
 `;
 
 const StyledProductImage = styled.figure`
@@ -40,20 +43,29 @@ const StyledQuantity = styled.p`
   font-size: 1rem;
   font-weight: ${({ theme }) => theme.light};
 `;
+const StyledButton = styled(Button)`
+  margin-left: 2rem;
+`;
 
-const CartProduct = ({ plant: { plantImage, plantTitle, plantPrice, quantity } }) => (
-  <StyledWrapper>
-    <StyledProductImage>
-      <img src={plantImage.title} alt="product picure" />
-    </StyledProductImage>
-    <StyledInfoWrapper>
-      <StyledTitle>{plantTitle}</StyledTitle>
-      <StyledQuantity>
-        {quantity} x ${plantPrice}
-      </StyledQuantity>
-    </StyledInfoWrapper>
-  </StyledWrapper>
-);
+const CartProduct = ({ plant }) => {
+  const { clearItemFromCart } = useContext(CartContext);
+  const { plantTitle, plantImage, plantPrice, quantity } = plant;
+
+  return (
+    <StyledWrapper>
+      <StyledProductImage>
+        <img src={plantImage.title} alt="product picure" />
+      </StyledProductImage>
+      <StyledInfoWrapper>
+        <StyledTitle>{plantTitle}</StyledTitle>
+        <StyledQuantity>
+          {quantity} x ${plantPrice}
+        </StyledQuantity>
+      </StyledInfoWrapper>
+      <StyledButton remove onClick={() => clearItemFromCart(plant)} />
+    </StyledWrapper>
+  );
+};
 CartProduct.propTypes = {
   plant: PropTypes.object.isRequired,
 };

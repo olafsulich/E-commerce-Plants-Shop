@@ -6,7 +6,7 @@ import magnifierIcon from '../../../assets/svg/magify.svg';
 const SelectWrapper = styled.div`
   width: 100%;
   width: 24rem;
-
+  margin: 0rem 1.5rem;
   @media only screen and (min-width: 500px) {
     width: 28rem;
   }
@@ -29,9 +29,6 @@ const StyledInput = styled.input`
   background-size: 15px;
   background-position: 92% 50%;
   background-repeat: no-repeat;
-  &:focus {
-    outline-color: ${({ theme }) => theme.fontColorPrimary};
-  }
 
   ::placeholder {
     letter-spacing: 1px;

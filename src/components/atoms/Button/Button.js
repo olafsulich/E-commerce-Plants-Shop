@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import removeIcon from '../../../assets/svg/removeIcon.svg';
+import backIcon from '../../../assets/svg/backArrow.svg';
 
 const StyledButton = styled.button`
   display: block;
@@ -60,6 +61,37 @@ const StyledButton = styled.button`
       height: 20px;
       cursor: pointer;
       background-image: url(${removeIcon});
+    `};
+
+  ${({ back }) =>
+    back &&
+    css`
+      align-self: center;
+      justify-self: center;
+      width: 40px;
+      height: 20px;
+      cursor: pointer;
+      background-image: url(${backIcon});
+      @media only screen and (max-width: 500px) {
+        display: none;
+      }
+    `};
+  ${({ logoutMain }) =>
+    logoutMain &&
+    css`
+      color: ${({ theme }) => theme.fontColorPrimary};
+      background-color: ${({ theme }) => theme.secondaryColor};
+      padding: 0.6rem 1.8rem;
+      font-size: 1.3rem;
+    `};
+
+  ${({ logoutSinglePlant }) =>
+    logoutSinglePlant &&
+    css`
+      color: ${({ theme }) => theme.fontColorHeading};
+      background-color: ${({ theme }) => theme.primaryColor};
+      padding: 0.6rem 1.8rem;
+      font-size: 1.3rem;
     `};
 `;
 export default StyledButton;

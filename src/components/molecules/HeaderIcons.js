@@ -1,9 +1,9 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Button from '../atoms/Button/Button';
 import CartButton from '../atoms/Button/CartButton';
-import LogoutIcon from '../../assets/svg/logout.svg';
 import { fire } from '../../firebase/Firebase';
 import Loader from '../atoms/Loader/Loader';
 
@@ -15,16 +15,12 @@ const StyledWrapper = styled.div`
   justify-content: flex-end;
   position: relative;
 `;
-const StyledLogoutButton = styled(Button)`
-  background-image: url(${LogoutIcon});
-  width: 2.2rem;
-  height: 2.2rem;
-`;
+
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
 
-const HeaderIcons = () => {
+const HeaderIcons = ({ isSinglePlant }) => {
   const [CartOpen, setCartOpen] = useState(false);
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
 
@@ -34,6 +30,7 @@ const HeaderIcons = () => {
 
   const handleCartOpen = () => setCartOpen(prevState => !prevState);
   const handlelogout = () => fire.auth().signOut();
+
   return (
     <StyledWrapper>
       {pageWidth <= 700 ? (
@@ -48,10 +45,22 @@ const HeaderIcons = () => {
           </Suspense>
         </>
       )}
-
-      <StyledLogoutButton aria-label="logut" onClick={handlelogout} />
+      {isSinglePlant ? (
+        <Button logoutSinglePlant aria-label="logut" onClick={handlelogout}>
+          logout
+        </Button>
+      ) : (
+        <Button logoutMain aria-label="logut" onClick={handlelogout}>
+          logout
+        </Button>
+      )}
     </StyledWrapper>
   );
 };
-
+HeaderIcons.propTypes = {
+  isSinglePlant: PropTypes.bool,
+};
+HeaderIcons.defaultProps = {
+  isSinglePlant: null,
+};
 export default HeaderIcons;

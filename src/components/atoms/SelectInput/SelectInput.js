@@ -7,13 +7,12 @@ import Arrow from '../../../assets/svg/arrow.svg';
 
 const SelectWrapper = styled.div`
   width: 100%;
-  margin: 2rem 0;
+  margin: 0rem 1.5rem;
   width: 24rem;
   @media only screen and (min-width: 500px) {
     width: 28rem;
   }
   @media only screen and (min-width: 700px) {
-    margin: 0 2rem;
     width: 24rem;
   }
 `;
@@ -41,9 +40,6 @@ const StyledSelect = styled.select`
   color: ${({ theme }) => theme.fontColorText};
   font-weight: ${({ theme }) => theme.regular};
   font-size: 1.3rem;
-  &:focus {
-    outline-color: ${({ theme }) => theme.fontColorPrimary};
-  }
 `;
 
 const StyledOption = styled.option`

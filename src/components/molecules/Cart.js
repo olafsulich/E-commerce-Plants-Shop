@@ -33,15 +33,7 @@ const StyledProductsWrapper = styled.div`
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
-    width: 3px;
-  }
-  ::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.secondaryColor};
-    border-radius: 10px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.primaryColor};
+    display: none;
   }
 `;
 

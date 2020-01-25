@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Text from '../atoms/Text/Text';
 import Heroplant from '../atoms/Plant/Plant';
 import HeaderIcons from './HeaderIcons';
+import Button from '../atoms/Button/Button';
 
 const StyledPlantWrapper = styled.div`
   background: hsl(153, 91%, 48%, 40%);
@@ -32,18 +33,34 @@ const StyledLogoWrapper = styled.section`
 const StyledLink = styled(Link)`
   text-decoration: none;
 `;
+const StyledLinkArrow = styled(Link)`
+  text-decoration: none;
+  margin-left: 6.5rem;
+  @media only screen and (max-width: 500px) {
+    margin-left: 0;
+  }
+`;
 
-const PlantHalfPage = props => {
-  const { isLoginPage } = props;
+const PlantHalfPage = ({ isLoginPage, isSinglePlant, isBackArrow }) => {
   return (
     <StyledPlantWrapper>
       <StyledLogoWrapper>
-        <StyledLink to="/">
-          <Text logo as="h1">
-            Plants & Home
-          </Text>
-        </StyledLink>
-        {isLoginPage ? null : <HeaderIcons />}
+        {isBackArrow ? <Button back onClick={() => window.history.back()}></Button> : null}
+        {isBackArrow ? (
+          <StyledLinkArrow to="/">
+            <Text logo as="h1">
+              Plants & Home
+            </Text>
+          </StyledLinkArrow>
+        ) : (
+          <StyledLink to="/">
+            <Text logo as="h1">
+              Plants & Home
+            </Text>
+          </StyledLink>
+        )}
+
+        {isLoginPage ? null : <HeaderIcons isSinglePlant={isSinglePlant} />}
       </StyledLogoWrapper>
       <Heroplant />
     </StyledPlantWrapper>
@@ -51,7 +68,14 @@ const PlantHalfPage = props => {
 };
 
 PlantHalfPage.propTypes = {
-  isLoginPage: PropTypes.bool.isRequired,
+  isLoginPage: PropTypes.bool,
+  isSinglePlant: PropTypes.bool,
+  isBackArrow: PropTypes.bool,
+};
+PlantHalfPage.defaultProps = {
+  isLoginPage: null,
+  isSinglePlant: null,
+  isBackArrow: null,
 };
 
 export default PlantHalfPage;

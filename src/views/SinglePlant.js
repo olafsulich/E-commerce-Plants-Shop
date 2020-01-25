@@ -149,7 +149,7 @@ class SinglePlant extends React.Component {
 
     return (
       <StyledWrapper>
-        <PlantHalfPage />
+        <PlantHalfPage isSinglePlant isBackArrow />
         <StyledDeteailsWrapper>
           <StyledTextWrapper>
             <StyledHeading main>{plantTitle}</StyledHeading>
