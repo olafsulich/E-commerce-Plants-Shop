@@ -18,7 +18,7 @@ const StyledTitle = styled.h3`
   font-weight: bold;
   font-size: 1.15rem;
   background: #fff;
-  padding: 0.6rem 2rem 0.6rem 0.2rem;
+  padding: 0.6rem 1.6rem 0.6rem 1.1rem;
 `;
 
 const StyledImageWrapper = styled.figure`

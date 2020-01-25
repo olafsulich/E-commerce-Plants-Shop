@@ -6,12 +6,13 @@ import magnifierIcon from '../../../assets/svg/magify.svg';
 const SelectWrapper = styled.div`
   width: 100%;
   width: 24rem;
-  margin: 0rem 1.5rem;
+  margin: 2rem 1.5rem;
   @media only screen and (min-width: 500px) {
     width: 28rem;
   }
   @media only screen and (min-width: 700px) {
     width: 24rem;
+    margin: 0rem 1.5rem;
   }
 `;
 
