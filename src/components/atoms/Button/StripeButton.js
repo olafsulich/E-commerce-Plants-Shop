@@ -33,7 +33,7 @@ const StripeButton = ({ price }) => {
       billingAddress
       shippingAddress
       image="https://i.ibb.co/pdgBVLQ/plants-vector-free-icon-set-30.png"
-      description={`Your total is ${price}`}
+      description={`Your total is  $${price}`}
       amount={priceStripe}
       panelLabel="Pay now"
       token={onToken}

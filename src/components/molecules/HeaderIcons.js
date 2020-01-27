@@ -9,7 +9,7 @@ import Loader from '../atoms/Loader/Loader';
 
 const Cart = lazy(() => import('./Cart'));
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.nav`
   display: flex;
   align-items: center;
   justify-content: flex-end;

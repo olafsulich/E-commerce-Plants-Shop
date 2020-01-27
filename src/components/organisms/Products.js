@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { CartContext } from '../../context/CartContext';
 import Product from '../molecules/Product';
 import Text from '../atoms/Text/Text';
 import Loader from '../atoms/Loader/Loader';
 
-const StyledWrapper = styled.section`
+const StyledWrapper = styled.div`
   margin: 0 3rem;
   display: grid;
   grid-template-columns: 1fr;
@@ -30,9 +30,11 @@ const StyledWrapper = styled.section`
 `;
 const StyledNoMatchWrapper = styled.div`
   width: 100%;
+  min-height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2rem;
 `;
 
 const Products = ({ plants }) => {
@@ -57,6 +59,7 @@ const Products = ({ plants }) => {
           title={plant.plantTitle}
           src={plant.plantImage.title}
           slug={plant.plantSlug}
+          price={plant.plantPrice}
         />
       ))}
     </StyledWrapper>

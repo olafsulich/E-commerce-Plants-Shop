@@ -8,6 +8,7 @@ import Button from '../components/atoms/Button/Button';
 import PlantHalfPage from '../components/molecules/PlantHalfPage';
 import Header from '../components/organisms/Header';
 import FlowerPots from '../components/molecules/FlowerPots';
+import Modal from '../components/molecules/Modal';
 import { CartContext } from '../context/CartContext';
 
 const StyledWrapper = styled.div`
@@ -16,6 +17,7 @@ const StyledWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 
   @media only screen and (min-width: 1000px) {
     flex-direction: row;
@@ -83,6 +85,7 @@ const StyledPaymentWrapper = styled.div`
   display: flex;
   align-items: flex;
   justify-content: flex-end;
+
   @media only screen and (min-width: 1000px) {
     margin: 1rem 0 0 0;
   }
@@ -123,8 +126,21 @@ class SinglePlant extends React.Component {
 
     this.state = {
       slug,
+      isModal: false,
     };
   }
+
+  openModal = () => {
+    this.setState({
+      isModal: true,
+    });
+  };
+
+  closeModal = () => {
+    this.setState({
+      isModal: false,
+    });
+  };
 
   render() {
     const { slug } = this.state;
@@ -146,7 +162,7 @@ class SinglePlant extends React.Component {
       );
     }
     const { plantTitle, plantPrice, plantDescription, plantType } = plant;
-
+    const { isModal } = this.state;
     return (
       <StyledWrapper>
         <PlantHalfPage isSinglePlant isBackArrow />
@@ -162,13 +178,21 @@ class SinglePlant extends React.Component {
               <FlowerPots />
               <StyledPaymentWrapper>
                 <StyledTypeText price>${plantPrice}</StyledTypeText>
-                <StyledButton aria-label="Add to cart" secondary onClick={() => addItem(plant)}>
+                <StyledButton
+                  aria-label="Add to cart"
+                  secondary
+                  onClick={() => {
+                    addItem(plant);
+                    this.openModal();
+                  }}
+                >
                   Add to cart
                 </StyledButton>
               </StyledPaymentWrapper>
             </StyledInfoWrapper>
           </StyledTextWrapper>
         </StyledDeteailsWrapper>
+        <Modal isVisible={isModal} handleModalChange={this.closeModal} />
       </StyledWrapper>
     );
   }

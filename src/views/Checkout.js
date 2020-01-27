@@ -60,7 +60,7 @@ const StyledProductsWrapper = styled.div`
     background: ${({ theme }) => theme.primaryColor};
   }
 `;
-const StyledInfoWrapper = styled.section`
+const StyledInfoWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;

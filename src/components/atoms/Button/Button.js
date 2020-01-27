@@ -69,7 +69,7 @@ const StyledButton = styled.button`
       align-self: center;
       justify-self: center;
       width: 40px;
-      height: 20px;
+      height: 19px;
       cursor: pointer;
       background-image: url(${backIcon});
       @media only screen and (max-width: 500px) {

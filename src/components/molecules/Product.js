@@ -15,10 +15,10 @@ const StyledTitle = styled.h3`
   top: 70%;
   left: 0;
   color: #000;
-  font-weight: bold;
+  font-weight: font-weight: ${({ theme }) => theme.bold};;
   font-size: 1.15rem;
   background: #fff;
-  padding: 0.6rem 1.6rem 0.6rem 1.1rem;
+  padding: 0.65rem 1.6rem 0.65rem 1.1rem;
 `;
 
 const StyledImageWrapper = styled.figure`
@@ -34,19 +34,30 @@ const StyledImage = styled.img`
 `;
 
 const StyledLink = styled(Link)`
+  width: 100%;
+  height: 100%;
   text-decoration: none;
 `;
 
-const Product = ({ title, src, slug }) => {
+const StyledPirce = styled.span`
+  font-weight: ${({ theme }) => theme.regular};
+  font-size: 0.8rem;
+`;
+
+const Product = ({ title, src, slug, price }) => {
+  console.log(price);
   return (
-    <StyledLink to={`/plants/${slug}`}>
-      <StyledTitleWrapper key={title}>
-        <StyledTitle>{title}</StyledTitle>
+    <StyledTitleWrapper key={title}>
+      <StyledLink to={`/plants/${slug}`}>
+        <StyledTitle>
+          {title}
+          <StyledPirce> /${price}</StyledPirce>
+        </StyledTitle>
         <StyledImageWrapper className="image_reveal">
           <StyledImage src={src} alt={`${title} plant`} />
         </StyledImageWrapper>
-      </StyledTitleWrapper>
-    </StyledLink>
+      </StyledLink>
+    </StyledTitleWrapper>
   );
 };
 
@@ -54,5 +65,6 @@ Product.propTypes = {
   title: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 export default Product;

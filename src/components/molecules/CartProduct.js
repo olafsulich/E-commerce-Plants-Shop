@@ -5,11 +5,12 @@ import Button from '../atoms/Button/Button';
 import { CartContext } from '../../context/CartContext';
 
 const StyledWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-content: space-between;
   z-index: 10;
-  padding: 2.5rem 0.5rem 0 0;
+  padding: 2.5rem 1.25rem 0 1.25rem;
   min-width: 200px;
 `;
 
@@ -44,7 +45,7 @@ const StyledQuantity = styled.p`
   font-weight: ${({ theme }) => theme.light};
 `;
 const StyledButton = styled(Button)`
-  margin-left: 2rem;
+  justify-self: center;
 `;
 
 const CartProduct = ({ plant }) => {

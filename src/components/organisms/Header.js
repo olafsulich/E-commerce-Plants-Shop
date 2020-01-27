@@ -20,14 +20,13 @@ const StyledHeader = styled.header`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  color: inherit;
 `;
 const Header = () => (
   <StyledHeader>
-    <StyledLink to="/">
-      <Text logo as="h1">
-        Plants & Home
-      </Text>
-    </StyledLink>
+    <Text logo as="h1">
+      <StyledLink to="/">Plants & Home </StyledLink>
+    </Text>
     <HeaderIcons />
   </StyledHeader>
 );
