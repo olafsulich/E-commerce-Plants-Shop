@@ -78,7 +78,7 @@ const StyledPrice = styled.span`
 
 const Checkout = () => {
   const [pageWidth, setPageWidth] = useState(window.innerWidth);
-  const { cartItems, addItem, removeItem, cartTotal } = useContext(CartContext);
+  const { cartItems, addItem, removeItem, cartTotal, clearColor } = useContext(CartContext);
 
   const updateDimensions = () => {
     setPageWidth(window.innerWidth);
@@ -86,6 +86,7 @@ const Checkout = () => {
 
   useEffect(() => {
     window.addEventListener('resize', updateDimensions);
+    clearColor();
     return () => {
       window.removeEventListener('resize', updateDimensions);
     };

@@ -45,7 +45,6 @@ const StyledPirce = styled.span`
 `;
 
 const Product = ({ title, src, slug, price }) => {
-  console.log(price);
   return (
     <StyledTitleWrapper key={title}>
       <StyledLink to={`/plants/${slug}`}>
