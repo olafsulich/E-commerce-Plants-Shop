@@ -81,7 +81,7 @@ npm run start
 
 ## Credits 👏
 
-Big thanks for Bartosz Szczeciński from React Polska. Bartosz helps me with problem during development.
+Big thanks to Bartosz Szczeciński from React Polska. Bartosz helps me with problem during development.
 
 ## Live 📍
 
