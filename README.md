@@ -1,54 +1,87 @@
-## Project title 🚀
+<h1 align="center">
+  <br>
+  <a href="http://flamboyant-newton-c81938.netlify.com/"><img src="https://i.ibb.co/7vqbT6v/android-icon-192x192.png" alt="Markdownify" width="200"></a>
+  <br>
+   Plants & Home
+  <br>
+</h1>
 
-Site for photographer Andrew Garnicz-Garnicki. Project's has three pages: home,pictures and videos.
+<h4 align="center">E-commerce <a href="http://flamboyant-newton-c81938.netlify.com/" target="_blank">Plants Shop</a>.</h4>
 
-## Motivation 🎉
+<p align="center">
+  <a href="http://flamboyant-newton-c81938.netlify.com/">
+    <img src="https://i.ibb.co/vVJXwSY/planttttt.png"
+         alt="Screen Shot">
+  </a>
+</p>
 
-This is non-profit site for my friend Andrew. Primary goal for this project was to learn how to work with client and pratice diffrent technologies.I learned also how to dealing with problems.
+## Project Overview 🎉
 
-## Screenshots 📺
-
-![Design](https://i.ibb.co/Q8XmKn6/Screen-Mobile.png)
-![Design](https://i.ibb.co/V9xk1Z6/Screen-Mobile2.png)
+E-commerce plants shop. I used <a href="https://bradfrost.com/blog/post/atomic-web-design">
+Atomic Design</a> for components architecture and <a href="https://storybook.js.org/">
+Storybook</a> for components documentation.
+When you first enter the page, you going to see sing in / sign up form.
+I used <a href="https://firebase.google.com/">Firebase OAuth</a> for authentication. After sign in you can search and filter plants according to your needs. I used <a href="https://www.datocms.com/">Dato CMS</a> for handling plants data. You can add your favourites plats to cart and finally buy them by <a href="https://stripe.com/">Stripe</a>. App supports CI/CD and Progressive Web Apps(PWA).
 
 ## Tech/framework used 🔧
 
-- HTML5
-- SCSS
-- ES6+
-- [MacyJS](http://macyjs.com/)
-- [PaperJS](http://paperjs.org/)
-- [Simplex-NoiseJS](https://www.npmjs.com/package/simplex-noise)
-- [GSAP](https://greensock.com/gsap/)
+- React
+- Context API
+- Hooks
+- React Router
+- Styled-Compontens
+- Firebase OAuth
+- Dato CMS
+- StoryBook
+- Netlify
+- CircleCI
+- PWA
+- Stripe
+- Husky & Lint-staged
+- Tools: Webpack, Eslint, Prettier
+
+## Screenshots 📺
+
+<p align="center">
+    <img src="https://i.ibb.co/vVJXwSY/planttttt.png" alt="Screen Shot">
+</p>
+
+<p align="center">
+    <img src="https://i.ibb.co/X8Ch1n2/Screen2.png" alt="Screen Shot">
+</p>
+
+<p align="center">
+    <img src="https://i.ibb.co/cvZm0rb/topaste2.png" alt="Screen Shot">
+</p>
+
+## Performance 🚀
+
+<p align="center">
+    <img src="https://i.ibb.co/jHKSz5p/perf.png" alt="Screen Shot">
+</p>
+
+<p align="center">It may be diffrent on your device.</p>
 
 ## Code Example/Issues 🔍
 
-My biggest issue was to implement mouse wheel feature. I found prepared function for that.
+If you have any issues, please let me know in the issues section or directly to olafsulich@gmail.com
+
+## Installation 💾
 
 ```bash
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-      const args = arguments;
-      const context = this;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => (inThrottle = false), limit);
-      }
-    };
-  }
-```
-
-## Installation 📍
-
-```bash
+git clone https://github.com/olafsulich/E-commerce-Plants-Shop.git
 npm install
+npm run start
 ```
 
 ## Credits 👏
 
-https://tympanus.net/codrops/ helps me with many problems.
+Big thanks for Bartosz Szczeciński from React Polska. Bartosz helps me with problem during development.
+
+## Live 📍
+
+<a href="http://flamboyant-newton-c81938.netlify.com/">https://flamboyant-newton-c81938.netlify.com/
+</a>
 
 ## License 🔱
 
