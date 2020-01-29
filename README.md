@@ -74,6 +74,11 @@ npm install
 npm run start
 ```
 
+## Sign in ❗️
+
+- Email: TestUser@gmail.com
+- Password: TestUser1
+
 ## Credits 👏
 
 Big thanks for Bartosz Szczeciński from React Polska. Bartosz helps me with problem during development.
