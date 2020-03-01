@@ -124,14 +124,14 @@ const StyledLabel = styled.label`
   text-align: start;
 `;
 
-const RangeInput = props => {
-  const { onChange, minPrice, maxPrice, value, name, price } = props;
+const RangeInput = ({ onChange, minPrice, maxPrice, value, name, price }) => {
   return (
-    <StyledInputWrapper>
+    <StyledInputWrapper data-testid="range">
       <StyledLabel htmlFor="range">
         Price range ${minPrice} - ${price}
       </StyledLabel>
       <StyledInput
+        data-testid="rangeInput"
         aria-label="price range"
         name={name}
         type="range"
@@ -145,11 +145,20 @@ const RangeInput = props => {
   );
 };
 RangeInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.any.isRequired,
-  minPrice: PropTypes.number.isRequired,
-  maxPrice: PropTypes.number.isRequired,
-  price: PropTypes.number.isRequired,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.any,
+  minPrice: PropTypes.number,
+  maxPrice: PropTypes.number,
+  price: PropTypes.number,
+};
+
+RangeInput.defaultProps = {
+  name: 'range',
+  onChange: () => {},
+  value: 50,
+  minPrice: 0,
+  maxPrice: 100,
+  price: 15,
 };
 export default RangeInput;
