@@ -56,7 +56,7 @@ const StyledPlantIcon = styled(Plant)`
 
 const Heroplant = () => {
   return (
-    <StyledPlantWrapper product>
+    <StyledPlantWrapper product data-testid="plant">
       <StyledMorphing src={Morphing} alt="morphing image" />
       <StyledPlant>
         <StyledPlantDefault>
