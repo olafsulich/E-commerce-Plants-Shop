@@ -1,15 +1,15 @@
 <h1 align="center">
   <br>
-  <a href="http://flamboyant-newton-c81938.netlify.com/"><img src="https://i.ibb.co/7vqbT6v/android-icon-192x192.png" alt="Markdownify" width="200"></a>
+  <a href="https://plants-and-home.netlify.com"><img src="https://i.ibb.co/7vqbT6v/android-icon-192x192.png" alt="Markdownify" width="200"></a>
   <br>
    Plants & Home
   <br>
 </h1>
 
-<h4 align="center">E-commerce <a href="http://flamboyant-newton-c81938.netlify.com/" target="_blank">Plants Shop</a>.</h4>
+<h4 align="center">E-commerce <a href="https://plants-and-home.netlify.com" target="_blank">Plants Shop</a>.</h4>
 
 <p align="center">
-  <a href="http://flamboyant-newton-c81938.netlify.com/">
+  <a href="https://plants-and-home.netlify.com">
     <img src="https://i.ibb.co/vVJXwSY/planttttt.png"
          alt="Screen Shot">
   </a>
@@ -85,8 +85,7 @@ Big thanks to Bartosz Szczeciński from React Polska. Bartosz helps me with prob
 
 ## Live 📍
 
-<a href="http://flamboyant-newton-c81938.netlify.com/">https://flamboyant-newton-c81938.netlify.com/
-</a>
+<a href="https://plants-and-home.netlify.com">https://plants-and-home.netlify.com</a>
 
 ## License 🔱
 
