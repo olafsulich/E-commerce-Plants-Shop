@@ -36,7 +36,7 @@ const StyledCircle = styled.div`
 `;
 
 const Loader = () => (
-  <StyledWrapper>
+  <StyledWrapper data-testid="loader">
     <StyledLoaderCircle>
       <StyledCircle />
     </StyledLoaderCircle>
