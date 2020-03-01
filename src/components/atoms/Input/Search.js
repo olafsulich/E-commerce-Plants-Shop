@@ -45,12 +45,12 @@ const StyledLabel = styled.label`
   margin-left: 0.5rem;
 `;
 
-const Search = props => {
-  const { name, value, onChange, placeholder } = props;
+const Search = ({ name, value, onChange, placeholder }) => {
   return (
-    <SelectWrapper>
-      <StyledLabel>Search</StyledLabel>
+    <SelectWrapper data-testid="search">
+      <StyledLabel htmlFor="search">Search</StyledLabel>
       <StyledInput
+        data-testid="searchInput"
         aria-label="search input"
         name={name}
         value={value}
@@ -58,15 +58,23 @@ const Search = props => {
         placeholder={placeholder}
         type="search"
         autoComplete="off"
+        id="search"
       />
     </SelectWrapper>
   );
 };
 Search.propTypes = {
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.string,
+  placeholder: PropTypes.string,
+};
+
+Search.defaultProps = {
+  placeholder: 'search',
+  name: 'search',
+  onChange: () => {},
+  value: 'search',
 };
 
 export default Search;
