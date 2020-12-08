@@ -1,19 +1,6 @@
-<h1 align="center">
-  <br>
-  <a href="https://plants-and-home.netlify.com"><img src="https://i.ibb.co/7vqbT6v/android-icon-192x192.png" alt="Markdownify" width="200"></a>
-  <br>
-   Plants & Home
-  <br>
-</h1>
 
-<h4 align="center">E-commerce <a href="https://plants-and-home.netlify.com" target="_blank">Plants Shop</a>.</h4>
-
-<p align="center">
-  <a href="https://plants-and-home.netlify.com">
-    <img src="https://i.ibb.co/vVJXwSY/planttttt.png"
+    <img src="https://i.ibb.co/7SWZtFS/plants-seo.png" width="100%"
          alt="Screen Shot">
-  </a>
-</p>
 
 ## Project Overview 🎉
 
