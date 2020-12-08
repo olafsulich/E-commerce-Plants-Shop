@@ -1,6 +1,4 @@
-
-    <img src="https://i.ibb.co/7SWZtFS/plants-seo.png" width="100%"
-         alt="Screen Shot">
+<img width="100%" src='https://i.ibb.co/7SWZtFS/plants-seo.png" />
 
 ## Project Overview 🎉
 
