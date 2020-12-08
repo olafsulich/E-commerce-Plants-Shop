@@ -1,4 +1,4 @@
-<img width="100%" src='https://i.ibb.co/7SWZtFS/plants-seo.png" />
+<img width="100%" src="https://i.ibb.co/7SWZtFS/plants-seo.png" />
 
 ## Project Overview 🎉
 
